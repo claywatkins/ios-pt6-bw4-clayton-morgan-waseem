@@ -13,6 +13,7 @@
 		0B6AE1CB25368F63009DA64C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B6AE1CA25368F63009DA64C /* Assets.xcassets */; };
 		0B6AE1CE25368F63009DA64C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6AE1CC25368F63009DA64C /* LaunchScreen.storyboard */; };
 		0B6AE1E225369021009DA64C /* testClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AE1E125369021009DA64C /* testClass.m */; };
+		0B6AE1E725369F32009DA64C /* MortgageCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AE1E625369F32009DA64C /* MortgageCalculatorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0B6AE1DF25369021009DA64C /* BW4MortgageCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BW4MortgageCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
 		0B6AE1E025369021009DA64C /* testClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testClass.h; sourceTree = "<group>"; };
 		0B6AE1E125369021009DA64C /* testClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testClass.m; sourceTree = "<group>"; };
+		0B6AE1E625369F32009DA64C /* MortgageCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MortgageCalculatorViewController.swift; path = BW4MortgageCalculator/Models/MortgageCalculatorViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 		0B6AE1DB25368FDC009DA64C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0B6AE1E625369F32009DA64C /* MortgageCalculatorViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B6AE1E725369F32009DA64C /* MortgageCalculatorViewController.swift in Sources */,
 				0B6AE1E225369021009DA64C /* testClass.m in Sources */,
 				0B6AE1C225368F61009DA64C /* AppDelegate.swift in Sources */,
 				0B6AE1C425368F61009DA64C /* SceneDelegate.swift in Sources */,

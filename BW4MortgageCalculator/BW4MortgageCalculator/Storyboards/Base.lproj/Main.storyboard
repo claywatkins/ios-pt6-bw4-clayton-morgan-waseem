@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Mortgage Calculator View Controller-->
         <scene sceneID="5fC-Mu-F1R">
             <objects>
-                <viewController id="YPw-Pg-aZg" sceneMemberID="viewController">
+                <viewController id="YPw-Pg-aZg" customClass="MortgageCalculatorViewController" customModule="BW4MortgageCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Osi-KA-Ial">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JQl-bZ-aXy">
-                                <rect key="frame" x="20" y="416" width="374" height="64"/>
+                                <rect key="frame" x="20" y="396" width="374" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Down Payment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFc-7x-4eq">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -64,13 +64,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="payment$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flf-zs-v0j">
+                                        <rect key="frame" x="0.0" y="34" width="374" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lgS-0l-ojy">
-                                        <rect key="frame" x="-2" y="34" width="378" height="31"/>
+                                        <rect key="frame" x="-2" y="68" width="378" height="31"/>
+                                        <connections>
+                                            <action selector="downPaymentSliderChanged:" destination="YPw-Pg-aZg" eventType="valueChanged" id="p4G-dU-62u"/>
+                                        </connections>
                                     </slider>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tGs-6i-Yt8">
-                                <rect key="frame" x="20" y="500" width="374" height="64"/>
+                                <rect key="frame" x="20" y="514" width="374" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1y-qP-UqW">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -78,13 +87,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rate%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4E1-Q2-eIQ">
+                                        <rect key="frame" x="0.0" y="34" width="374" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Usf-CC-M0D">
-                                        <rect key="frame" x="-2" y="34" width="378" height="31"/>
+                                        <rect key="frame" x="-2" y="68" width="378" height="31"/>
+                                        <connections>
+                                            <action selector="interestRateSilderChanged:" destination="YPw-Pg-aZg" eventType="valueChanged" id="X0d-Mh-z2B"/>
+                                        </connections>
                                     </slider>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KyU-J7-zTq">
-                                <rect key="frame" x="20" y="584" width="374" height="64"/>
+                                <rect key="frame" x="20" y="632" width="374" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period (years)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ke-cg-kZj">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -98,11 +116,14 @@
                                         <state key="normal" title="Select Loan Term">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="selectLoanTermButtonPressed:" destination="YPw-Pg-aZg" eventType="touchUpInside" id="P39-Sb-030"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vfh-Gj-yaJ">
-                                <rect key="frame" x="20" y="698" width="374" height="26.5"/>
+                                <rect key="frame" x="20" y="721" width="374" height="26.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Mortgage Cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFm-I5-8fd">
                                         <rect key="frame" x="0.0" y="0.0" width="193.5" height="26.5"/>
@@ -119,7 +140,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="0Lh-xH-eTO">
-                                <rect key="frame" x="20" y="744.5" width="374" height="26.5"/>
+                                <rect key="frame" x="20" y="767.5" width="374" height="26.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Monthly Payments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aS-hE-dPB">
                                         <rect key="frame" x="0.0" y="0.0" width="176.5" height="26.5"/>
@@ -136,11 +157,14 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-uk-vwy">
-                                <rect key="frame" x="20" y="816" width="374" height="30"/>
+                                <rect key="frame" x="20" y="814" width="374" height="30"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <state key="normal" title="Calculate">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="calculateMortgageButtonPressed:" destination="YPw-Pg-aZg" eventType="touchUpInside" id="iwp-DM-H8S"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nuO-6w-Ka5"/>
@@ -157,19 +181,26 @@
                             <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="Eeb-uk-vwy" secondAttribute="trailing" constant="20" id="Gzi-Hu-DFZ"/>
                             <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="Vfh-Gj-yaJ" secondAttribute="trailing" constant="20" id="Hb7-iF-ai9"/>
                             <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="JQl-bZ-aXy" secondAttribute="trailing" constant="20" id="LZP-hA-5Xq"/>
-                            <constraint firstItem="Eeb-uk-vwy" firstAttribute="top" secondItem="0Lh-xH-eTO" secondAttribute="bottom" constant="45" id="OJ3-Gc-tzY"/>
+                            <constraint firstItem="Eeb-uk-vwy" firstAttribute="top" secondItem="0Lh-xH-eTO" secondAttribute="bottom" constant="20" id="OJ3-Gc-tzY"/>
                             <constraint firstItem="67k-1c-mYB" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="PGq-Md-gQ3"/>
                             <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="tGs-6i-Yt8" secondAttribute="trailing" constant="20" id="RgZ-Eq-pIt"/>
                             <constraint firstItem="tGs-6i-Yt8" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="WLx-Df-nKs"/>
                             <constraint firstItem="Vfh-Gj-yaJ" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="fj7-BU-z8t"/>
                             <constraint firstItem="67k-1c-mYB" firstAttribute="top" secondItem="nuO-6w-Ka5" secondAttribute="top" constant="37" id="ho5-hi-xm4"/>
                             <constraint firstItem="tGs-6i-Yt8" firstAttribute="top" secondItem="JQl-bZ-aXy" secondAttribute="bottom" constant="20" id="jX4-1x-FnS"/>
-                            <constraint firstItem="JQl-bZ-aXy" firstAttribute="top" secondItem="67k-1c-mYB" secondAttribute="bottom" constant="50" id="ppg-dJ-tVD"/>
-                            <constraint firstItem="Vfh-Gj-yaJ" firstAttribute="top" secondItem="KyU-J7-zTq" secondAttribute="bottom" constant="50" id="q7i-JB-CWH"/>
+                            <constraint firstItem="JQl-bZ-aXy" firstAttribute="top" secondItem="67k-1c-mYB" secondAttribute="bottom" constant="30" id="ppg-dJ-tVD"/>
+                            <constraint firstItem="Vfh-Gj-yaJ" firstAttribute="top" secondItem="KyU-J7-zTq" secondAttribute="bottom" constant="25" id="q7i-JB-CWH"/>
                             <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="KyU-J7-zTq" secondAttribute="trailing" constant="20" id="sQr-1V-dre"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ipF-M6-9UE"/>
+                    <connections>
+                        <outlet property="downPaymentLabel" destination="Flf-zs-v0j" id="h1J-aD-o1G"/>
+                        <outlet property="interestRateLabel" destination="4E1-Q2-eIQ" id="Lje-9E-oC3"/>
+                        <outlet property="monthlyPaymentLabel" destination="8u3-ua-8sX" id="nFj-6V-gHd"/>
+                        <outlet property="mortgageAmountTextField" destination="yi5-9i-0tF" id="q4V-uv-d1e"/>
+                        <outlet property="totalMortgageLabel" destination="0wh-qD-PYu" id="Lz4-6b-LKp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LeR-mt-vpv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
