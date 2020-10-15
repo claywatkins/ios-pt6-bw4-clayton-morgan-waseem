@@ -35,6 +35,7 @@ class MortgageCalculatorViewController: UIViewController {
     @IBAction func calculateMortgageButtonPressed(_ sender: Any) {
     }
     
+    // MARK: - Private
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -243,7 +243,7 @@
         <!--Map-->
         <scene sceneID="yDA-Q3-QOf">
             <objects>
-                <viewController id="rXu-Re-p2U" sceneMemberID="viewController">
+                <viewController id="rXu-Re-p2U" customClass="MapViewController" customModule="BW4MortgageCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y4i-Ze-WKa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -262,15 +262,18 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map.fill" catalog="system" id="fMv-Wc-8TJ"/>
+                    <connections>
+                        <outlet property="mapKit" destination="7ts-kp-oTZ" id="g0Y-L8-1bW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmA-ti-jti" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2800" y="57.589285714285708"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Saved Mortgages Table View Controller-->
         <scene sceneID="Yk8-Sh-zeO">
             <objects>
-                <tableViewController id="V6D-Wb-xvl" sceneMemberID="viewController">
+                <tableViewController id="V6D-Wb-xvl" customClass="SavedMortgagesTableViewController" customModule="BW4MortgageCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gO1-gV-OWT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -297,12 +300,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaW-Cu-kMQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1369.5652173913045" y="751.33928571428567"/>
+            <point key="canvasLocation" x="1368" y="751"/>
         </scene>
-        <!--View Controller-->
+        <!--Mortgage Detail View Controller-->
         <scene sceneID="EX3-Vx-roW">
             <objects>
-                <viewController id="C00-A5-D2r" sceneMemberID="viewController">
+                <viewController id="C00-A5-D2r" customClass="MortgageDetailViewController" customModule="BW4MortgageCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MN1-lL-ZNZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -313,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qqi-IV-fa6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638" y="751"/>
+            <point key="canvasLocation" x="599" y="751"/>
         </scene>
         <!--Mortgages-->
         <scene sceneID="sGb-Vg-rQs">

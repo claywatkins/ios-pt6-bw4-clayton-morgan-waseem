@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B4839E12537F62E007972C9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4839E02537F62E007972C9 /* MapViewController.swift */; };
+		0B4839E42537F647007972C9 /* SavedMortgagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4839E32537F647007972C9 /* SavedMortgagesTableViewController.swift */; };
+		0B4839E72537F688007972C9 /* MortgageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4839E62537F688007972C9 /* MortgageDetailViewController.swift */; };
 		0B6AE1C225368F61009DA64C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AE1C125368F61009DA64C /* AppDelegate.swift */; };
 		0B6AE1C425368F61009DA64C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AE1C325368F61009DA64C /* SceneDelegate.swift */; };
 		0B6AE1C925368F61009DA64C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6AE1C725368F61009DA64C /* Main.storyboard */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B4839E02537F62E007972C9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0B4839E32537F647007972C9 /* SavedMortgagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMortgagesTableViewController.swift; sourceTree = "<group>"; };
+		0B4839E62537F688007972C9 /* MortgageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageDetailViewController.swift; sourceTree = "<group>"; };
 		0B6AE1BE25368F61009DA64C /* BW4MortgageCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BW4MortgageCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6AE1C125368F61009DA64C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B6AE1C325368F61009DA64C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				0B6AE1E625369F32009DA64C /* MortgageCalculatorViewController.swift */,
+				0B4839E32537F647007972C9 /* SavedMortgagesTableViewController.swift */,
+				0B4839E62537F688007972C9 /* MortgageDetailViewController.swift */,
+				0B4839E02537F62E007972C9 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -188,7 +197,10 @@
 				0B6AE1E725369F32009DA64C /* MortgageCalculatorViewController.swift in Sources */,
 				0B6AE1E225369021009DA64C /* testClass.m in Sources */,
 				0B6AE1C225368F61009DA64C /* AppDelegate.swift in Sources */,
+				0B4839E72537F688007972C9 /* MortgageDetailViewController.swift in Sources */,
+				0B4839E12537F62E007972C9 /* MapViewController.swift in Sources */,
 				0B6AE1C425368F61009DA64C /* SceneDelegate.swift in Sources */,
+				0B4839E42537F647007972C9 /* SavedMortgagesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
