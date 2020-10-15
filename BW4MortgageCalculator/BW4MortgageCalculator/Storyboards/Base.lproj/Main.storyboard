@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JQl-bZ-aXy">
-                                <rect key="frame" x="20" y="309" width="374" height="98"/>
+                                <rect key="frame" x="20" y="309" width="374" height="102"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Down Payment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFc-7x-4eq">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -26,22 +26,25 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="payment$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flf-zs-v0j">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flf-zs-v0j">
                                         <rect key="frame" x="0.0" y="34" width="374" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lgS-0l-ojy">
-                                        <rect key="frame" x="-2" y="68" width="378" height="31"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Down payment here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TLZ-hQ-3K6">
+                                        <rect key="frame" x="0.0" y="68" width="374" height="34"/>
+                                        <color key="backgroundColor" red="0.87065751903553301" green="0.76165692811548846" blue="0.38763965087515462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="downPaymentSliderChanged:" destination="YPw-Pg-aZg" eventType="valueChanged" id="p4G-dU-62u"/>
+                                            <outlet property="delegate" destination="YPw-Pg-aZg" id="gDE-Iy-O1K"/>
                                         </connections>
-                                    </slider>
+                                    </textField>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tGs-6i-Yt8">
-                                <rect key="frame" x="20" y="427" width="374" height="98"/>
+                                <rect key="frame" x="20" y="431" width="374" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1y-qP-UqW">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -55,7 +58,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Usf-CC-M0D">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="40" translatesAutoresizingMaskIntoConstraints="NO" id="Usf-CC-M0D">
                                         <rect key="frame" x="-2" y="68" width="378" height="31"/>
                                         <connections>
                                             <action selector="interestRateSilderChanged:" destination="YPw-Pg-aZg" eventType="valueChanged" id="X0d-Mh-z2B"/>
@@ -64,7 +67,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KyU-J7-zTq">
-                                <rect key="frame" x="20" y="545" width="374" height="64"/>
+                                <rect key="frame" x="20" y="549" width="374" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period (years)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ke-cg-kZj">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -85,7 +88,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vfh-Gj-yaJ">
-                                <rect key="frame" x="20" y="634" width="374" height="26.5"/>
+                                <rect key="frame" x="20" y="638" width="374" height="26.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Mortgage Cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFm-I5-8fd">
                                         <rect key="frame" x="0.0" y="0.0" width="193.5" height="26.5"/>
@@ -101,25 +104,25 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="0Lh-xH-eTO">
-                                <rect key="frame" x="20" y="680.5" width="374" height="26.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="0Lh-xH-eTO">
+                                <rect key="frame" x="20" y="684.5" width="374" height="21.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Monthly Payments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aS-hE-dPB">
-                                        <rect key="frame" x="0.0" y="0.0" width="176.5" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="186.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ Dollar amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8u3-ua-8sX">
-                                        <rect key="frame" x="223" y="0.0" width="151" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <rect key="frame" x="193.5" y="0.0" width="180.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-uk-vwy">
-                                <rect key="frame" x="20" y="727" width="374" height="30"/>
+                                <rect key="frame" x="20" y="726" width="374" height="30"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <state key="normal" title="Calculate">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,31 +144,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67k-1c-mYB">
                                 <rect key="frame" x="20" y="64" width="374" height="205"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="HKG-fB-Oc3">
-                                        <rect key="frame" x="60" y="40.5" width="254" height="124"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HKG-fB-Oc3">
+                                        <rect key="frame" x="62.5" y="21.5" width="249.5" height="162.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mortgage Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eN0-Qh-GoJ">
-                                                <rect key="frame" x="2.5" y="0.0" width="249.5" height="38.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="249.5" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="x2B-lk-qRc">
-                                                <rect key="frame" x="0.0" y="78.5" width="254" height="45.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HsZ-t5-S4E">
-                                                        <rect key="frame" x="0.0" y="5" width="19" height="36"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ Dollar amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yi5-9i-0tF">
-                                                        <rect key="frame" x="21" y="0.0" width="233" height="45.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                </subviews>
-                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1D-5a-uEZ">
+                                                <rect key="frame" x="81.5" y="58.5" width="86" height="38.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ Dollar amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yi5-9i-0tF">
+                                                <rect key="frame" x="8" y="117" width="233" height="45.5"/>
+                                                <color key="backgroundColor" red="0.87065751899999999" green="0.76165692809999996" blue="0.38763965090000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="YPw-Pg-aZg" id="Kba-bv-d7G"/>
+                                                </connections>
+                                            </textField>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -210,8 +212,12 @@
                     <navigationItem key="navigationItem" id="ipF-M6-9UE"/>
                     <connections>
                         <outlet property="downPaymentLabel" destination="Flf-zs-v0j" id="h1J-aD-o1G"/>
+                        <outlet property="downPaymentTextField" destination="TLZ-hQ-3K6" id="LHB-T7-LH9"/>
                         <outlet property="interestRateLabel" destination="4E1-Q2-eIQ" id="Lje-9E-oC3"/>
+                        <outlet property="interestRateSlider" destination="Usf-CC-M0D" id="cT1-2g-0gF"/>
+                        <outlet property="loanTermLabel" destination="8Ke-cg-kZj" id="PgX-rX-PNZ"/>
                         <outlet property="monthlyPaymentLabel" destination="8u3-ua-8sX" id="nFj-6V-gHd"/>
+                        <outlet property="mortgageAmountLabel" destination="j1D-5a-uEZ" id="Yxx-Qp-4Zz"/>
                         <outlet property="mortgageAmountTextField" destination="yi5-9i-0tF" id="q4V-uv-d1e"/>
                         <outlet property="totalMortgageLabel" destination="0wh-qD-PYu" id="Lz4-6b-LKp"/>
                     </connections>
@@ -227,6 +233,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="YTe-gP-IEB"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cRl-vy-VDP">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
