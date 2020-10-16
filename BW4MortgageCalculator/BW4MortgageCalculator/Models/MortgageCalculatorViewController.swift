@@ -71,10 +71,13 @@ class MortgageCalculatorViewController: UIViewController {
                                                                             downPayment: myMortgage.downPayment,
                                                                             term: myMortgage.term,
                                                                             interestRate: myMortgage.interestRate)
+        let totalCost = mortgageController.calculateTotalMortgageCost(mortgage: myMortgage)
         
-        // Updating the payment label
-//        monthlyPaymentLabel.text = "$" + String(format: "%.2f", myMortgagePayment) + " per month"
-        monthlyPaymentLabel.text = "$" + "\(Int(myMortgagePayment))" + " per month"
+        // Updating and revealing the payment and total labels
+        monthlyPaymentLabel.isHidden = false
+        totalMortgageLabel.isHidden = false
+        monthlyPaymentLabel.text = "$" + "\(myMortgagePayment)" + " per month"
+        totalMortgageLabel.text  = "$\(totalCost)"
     }
     
     // MARK: - Private
