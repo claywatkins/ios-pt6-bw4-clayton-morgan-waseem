@@ -36,7 +36,7 @@
                                         <rect key="frame" x="0.0" y="68" width="374" height="34"/>
                                         <color key="backgroundColor" red="0.87065751903553301" green="0.76165692811548846" blue="0.38763965087515462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <connections>
                                             <outlet property="delegate" destination="YPw-Pg-aZg" id="gDE-Iy-O1K"/>
                                         </connections>
@@ -163,7 +163,7 @@
                                                 <rect key="frame" x="8" y="117" width="233" height="45.5"/>
                                                 <color key="backgroundColor" red="0.87065751899999999" green="0.76165692809999996" blue="0.38763965090000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="YPw-Pg-aZg" id="Kba-bv-d7G"/>
                                                 </connections>

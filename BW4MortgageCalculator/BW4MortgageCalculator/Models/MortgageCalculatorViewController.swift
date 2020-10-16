@@ -29,8 +29,8 @@ class MortgageCalculatorViewController: UIViewController {
     // Variables to keep track of user input for later calculation
     var chosenPrincipal: Int32?
     var chosenTerm: Int32?
-    var chosenInterest: Double?
-    var chosenDownPayment: Int32?
+    var chosenInterest: Double = 0
+    var chosenDownPayment: Int32 = 0
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -63,13 +63,18 @@ class MortgageCalculatorViewController: UIViewController {
     
     @IBAction func calculateMortgageButtonPressed(_ sender: Any) {
         // Creating a mortgage
-        let myMortgage = Mortgage(term: chosenTerm!, principal: chosenPrincipal!, interestRate: chosenInterest!, downPayment: chosenDownPayment!)
-
+        guard let term = chosenTerm, let principal = chosenPrincipal else { return }
+        let myMortgage = Mortgage(term: term, principal: principal, interestRate: chosenInterest, downPayment: chosenDownPayment)
+        
         // Calculating a mortgage payment
-        let myMortgagePayment = mortgageController.calculateMortgagePayment(principal: myMortgage.principal, downPayment: myMortgage.downPayment, term: myMortgage.term, interestRate: myMortgage.interestRate)
+        let myMortgagePayment = mortgageController.calculateMortgagePayment(principal: myMortgage.principal,
+                                                                            downPayment: myMortgage.downPayment,
+                                                                            term: myMortgage.term,
+                                                                            interestRate: myMortgage.interestRate)
         
         // Updating the payment label
-        monthlyPaymentLabel.text = "$" + String(format: "%.2f", myMortgagePayment) + " per month"
+//        monthlyPaymentLabel.text = "$" + String(format: "%.2f", myMortgagePayment) + " per month"
+        monthlyPaymentLabel.text = "$" + "\(Int(myMortgagePayment))" + " per month"
     }
     
     // MARK: - Private
@@ -102,6 +107,7 @@ extension MortgageCalculatorViewController: UITextFieldDelegate {
             let downPayment = Double(downPaymentTextField.text!)
             chosenDownPayment = Int32(downPayment!)
             downPaymentLabel.text = "$" + String(format: "%.2f", downPayment!)
+            self.downPaymentTextField.resignFirstResponder()
         }
         
         if let mortgage = mortgageAmountTextField.text, !mortgage.isEmpty, mortgage.isDouble {
@@ -109,6 +115,7 @@ extension MortgageCalculatorViewController: UITextFieldDelegate {
             let mortgageAmount = Double(mortgageAmountTextField.text!)
             chosenPrincipal = Int32(mortgageAmount!)
             mortgageAmountLabel.text = "$" + String(format: "%.2f", mortgageAmount!)
+            downPaymentTextField.becomeFirstResponder()
         }
         return true
     }
