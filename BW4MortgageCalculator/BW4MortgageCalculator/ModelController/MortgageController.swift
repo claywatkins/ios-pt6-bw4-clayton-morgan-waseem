@@ -13,7 +13,7 @@ class MortgageController {
     static let shared = MortgageController()
     
     /// Methods
-    func calculateMortgagePayment(principal: Int32, downPayment: Int32, term: Int32, interestRate: Double) -> Double {
+    func calculateMortgagePayment(principal: Int32, downPayment: Int32, term: Int32, interestRate: Double) -> Int32 {
         //  convert the interest rate entered by user to percentage
         let interestRate100 = interestRate / 100
         //  taking the term [in years] * 12 to find number of monthly payments
@@ -33,7 +33,21 @@ class MortgageController {
         let denominator = (pow(Double(1 + i12), totalPayments)) - 1
         //  calculate the payment amount
         let payment = numerator / denominator
-        return Double(payment)
+        
+        return Int32(payment)
+    }
+    
+    func calculateTotalMortgageCost(mortgage: Mortgage) -> Int32 {
+        
+        let principal = mortgage.principal
+        let term = mortgage.term
+        let interestRate = mortgage.interestRate
+        let numberOfPayments = mortgage.term * 12
+        let downPayment = mortgage.downPayment
+        let monthlyPayment = calculateMortgagePayment(principal: principal, downPayment: downPayment, term: term, interestRate: interestRate)
+        
+        let mortgageTotal = monthlyPayment * numberOfPayments
+        return mortgageTotal
     }
     
 } //End of struct
