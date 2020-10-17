@@ -34,6 +34,17 @@ class MortgageCalculatorViewController: UIViewController {
     
     // Variable to keep track of current created Mortgage
     var currentMortgage: Mortgage?
+    
+    // Variables that store UIAlertControllers that are ready to be presented at any time
+    var interestAlertController: UIAlertController {
+        let alert = UIAlertController(title: "Please adjust the interest rate slider",
+                                      message: "Please choose an interest rate option that is greater than 0",
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(action)
+        return alert
+    }
+    
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -67,6 +78,10 @@ class MortgageCalculatorViewController: UIViewController {
     @IBAction func calculateMortgageButtonPressed(_ sender: Any) {
         // Creating a mortgage
         guard let term = chosenTerm, let principal = chosenPrincipal else { return }
+        guard chosenInterest != 0 else {
+            present(interestAlertController, animated: true)
+            return
+        }
         let myMortgage = Mortgage(term: term, principal: principal, interestRate: chosenInterest, downPayment: chosenDownPayment, montlyPayment: 0, totalCost: 0)
         self.currentMortgage = myMortgage
         // Calculating a mortgage payment
