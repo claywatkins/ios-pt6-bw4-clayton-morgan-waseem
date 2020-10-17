@@ -15,7 +15,7 @@ class HelpfulLinksViewController: UIViewController {
     // This url is for an article, it's a First-Time Homebuyer's Guide
     let buyerGuideURL = URL(string: "https://www.investopedia.com/updates/first-time-home-buyer/")!
     // This url is for a Quiz: Am I Ready To Buy A House?
-    let quizURL = URL(string: "https://www.fortunebuilders.com/am-i-ready-to-buy-a-house/")!
+    let quizURL = URL(string: "https://www.sofi.com/learn/content/should-you-buy-or-rent-a-home-quiz/")!
     // This url is for a YouTube video: 10 Cheapest States to Buy a Home in America
     let videoURL = URL(string: "https://www.youtube.com/watch?v=h2kHXlj2PXU&ab_channel=WorldAccordingToBriggs")!
     // This url is for .....
