@@ -36,7 +36,7 @@
                                         <rect key="frame" x="0.0" y="68" width="374" height="34"/>
                                         <color key="backgroundColor" red="0.87065751903553301" green="0.76165692811548846" blue="0.38763965087515462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="YPw-Pg-aZg" id="gDE-Iy-O1K"/>
                                         </connections>

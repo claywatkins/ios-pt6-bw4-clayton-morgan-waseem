@@ -112,7 +112,8 @@ class MortgageCalculatorViewController: UIViewController {
     }
 }
 
-// MARK: - Extension
+// MARK: - Extension -
+
 extension MortgageCalculatorViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -123,7 +124,7 @@ extension MortgageCalculatorViewController: UITextFieldDelegate {
             let downPayment = Double(downPaymentTextField.text!)
             chosenDownPayment = Int32(downPayment!)
             downPaymentLabel.text = "$" + String(format: "%.2f", downPayment!)
-            self.downPaymentTextField.resignFirstResponder()
+            downPaymentTextField.resignFirstResponder()
         }
         
         if let mortgage = mortgageAmountTextField.text, !mortgage.isEmpty, mortgage.isDouble {
@@ -131,7 +132,11 @@ extension MortgageCalculatorViewController: UITextFieldDelegate {
             let mortgageAmount = Double(mortgageAmountTextField.text!)
             chosenPrincipal = Int32(mortgageAmount!)
             mortgageAmountLabel.text = "$" + String(format: "%.2f", mortgageAmount!)
-            downPaymentTextField.becomeFirstResponder()
+            
+            if mortgageAmountTextField.isFirstResponder {
+                downPaymentTextField.becomeFirstResponder()
+            }
+            
         }
         return true
     }
@@ -162,5 +167,39 @@ extension MortgageCalculatorViewController: UIPickerViewDelegate, UIPickerViewDa
 extension String {
     var isDouble: Bool {
         Double(self) != nil
+    }
+}
+
+// This extension handles adding a 'done' button to any keyboard that appears when a textField is highlighted
+extension UITextField {
+    
+    @IBInspectable var doneAccessory: Bool {
+        
+        get {
+            return self.doneAccessory
+        }
+        set (hasDone) {
+            if hasDone{
+                addDoneButtonOnKeyboard()
+            }
+        }
+    }
+    
+    func addDoneButtonOnKeyboard() {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.inputAccessoryView = doneToolbar
+    }
+    
+    @objc func doneButtonAction() {
+        self.resignFirstResponder()
     }
 }
