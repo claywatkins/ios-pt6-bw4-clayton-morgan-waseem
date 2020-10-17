@@ -19,11 +19,11 @@ class HelpfulLinksViewController: UIViewController {
     // This url is for a YouTube video: 10 Cheapest States to Buy a Home in America
     let videoURL = URL(string: "https://www.youtube.com/watch?v=h2kHXlj2PXU&ab_channel=WorldAccordingToBriggs")!
     // This url is for .....
-    
+    let loansAndProgramsURL = URL(string: "https://www.nerdwallet.com/article/mortgages/programs-help-first-time-homebuyers")!
     // This url is for .....
-    
+    let buyerKnowledgeURL = URL(string: "https://porch.com/resource/first-time-homebuyers-quiz")!
     // This url is for .....
-    
+    let daveRamseyVideoURL = URL(string: "https://www.youtube.com/watch?v=d7tshuaQynA&ab_channel=TheDaveRamseyShow")!
     
     //MARK: - IBActions -
     
@@ -39,6 +39,21 @@ class HelpfulLinksViewController: UIViewController {
     
     @IBAction func videoButtonTapped(_ sender: UIButton) {
         let safariVC = SFSafariViewController(url: videoURL)
+        present(safariVC, animated: true)
+    }
+    
+    @IBAction func loansAndProgramsButtonTapped(_ sender: UIButton) {
+        let safariVC = SFSafariViewController(url: loansAndProgramsURL)
+        present(safariVC, animated: true)
+    }
+    
+    @IBAction func buyerKnowledgeButtonTapped(_ sender: UIButton) {
+        let safariVC = SFSafariViewController(url: buyerKnowledgeURL)
+        present(safariVC, animated: true)
+    }
+    
+    @IBAction func daveRamseyVideoButtonTapped(_ sender: UIButton) {
+        let safariVC = SFSafariViewController(url: daveRamseyVideoURL)
         present(safariVC, animated: true)
     }
     
