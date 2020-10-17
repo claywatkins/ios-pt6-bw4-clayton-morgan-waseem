@@ -9,6 +9,11 @@ import Foundation
 
 class MortgageController {
     
+    // MARK: - Properties
+    var savedMortgages: [Mortgage] = []
+    
+    // MARK: - Initalizer
+    
     /// Singleton property
     static let shared = MortgageController()
     
@@ -49,5 +54,24 @@ class MortgageController {
         let mortgageTotal = monthlyPayment * numberOfPayments
         return mortgageTotal
     }
+    
+    // MARK: - CRUD
+    
+    private var persistentFileURL: URL? {
+        let fm = FileManager.default
+        guard let directory = fm.urls(for: .documentDirectory, in: .userDomainMask) .first else { return nil}
+        return directory.appendingPathComponent("mortgages.plist")
+    }
+    
+//    private func saveToPersistentStore(mortgage: Mortgage) {
+//        guard let url = persistentFileURL else { return }
+//        do {
+//            let encoder = PropertyListEncoder()
+////            let data = try encoder.encode(mortgage)
+//            try data.write(to:url)
+//        } catch {
+//            print("Error saving mortgage data: \(error)")
+//        }
+//    }
     
 } //End of struct
