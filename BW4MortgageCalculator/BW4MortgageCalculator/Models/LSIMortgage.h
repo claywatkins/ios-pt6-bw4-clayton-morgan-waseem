@@ -15,8 +15,10 @@ NS_SWIFT_NAME(Mortgage)
 @property (nonatomic) int principal;
 @property (nonatomic) int downPayment;
 @property (nonatomic) double interestRate;
+@property (nonatomic) double monthlyPayment;
+@property (nonatomic) double totalCost;
 
-- (instancetype)initWithTerm:(int)term principal:(int)principal interestRate:(double)interestRate downPayment:(int)downPayment;
+- (instancetype)initWithTerm:(int)term principal:(int)principal interestRate:(double)interestRate downPayment:(int)downPayment montlyPayment:(double)montlyPayment totalCost:(double)totalCost;
 
 @end
 

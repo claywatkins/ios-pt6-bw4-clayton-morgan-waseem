@@ -9,6 +9,9 @@ import UIKit
 
 class SavedMortgagesTableViewController: UITableViewController {
 
+    // MARK: - Properties
+    let mortgageController = MortgageController.shared
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,11 +19,13 @@ class SavedMortgagesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return mortgageController.savedMortgages.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MortgageCell", for: indexPath)
+        cell.textLabel?.text = "Mortgage \(indexPath.count - 1)"
+        cell.detailTextLabel?.text = "Total Mortgage Cost: $\(mortgageController.savedMortgages[indexPath.row].totalCost)"
         return cell
     }
 

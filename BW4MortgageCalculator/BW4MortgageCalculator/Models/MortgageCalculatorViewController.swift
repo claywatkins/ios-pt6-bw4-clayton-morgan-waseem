@@ -32,6 +32,9 @@ class MortgageCalculatorViewController: UIViewController {
     var chosenInterest: Double = 0
     var chosenDownPayment: Int32 = 0
     
+    // Variable to keep track of current created Mortgage
+    var currentMortgage: Mortgage?
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,21 +67,31 @@ class MortgageCalculatorViewController: UIViewController {
     @IBAction func calculateMortgageButtonPressed(_ sender: Any) {
         // Creating a mortgage
         guard let term = chosenTerm, let principal = chosenPrincipal else { return }
-        let myMortgage = Mortgage(term: term, principal: principal, interestRate: chosenInterest, downPayment: chosenDownPayment)
-        
+        let myMortgage = Mortgage(term: term, principal: principal, interestRate: chosenInterest, downPayment: chosenDownPayment, montlyPayment: 0, totalCost: 0)
+        self.currentMortgage = myMortgage
         // Calculating a mortgage payment
         let myMortgagePayment = mortgageController.calculateMortgagePayment(principal: myMortgage.principal,
                                                                             downPayment: myMortgage.downPayment,
                                                                             term: myMortgage.term,
                                                                             interestRate: myMortgage.interestRate)
+        myMortgage.monthlyPayment = Double(myMortgagePayment)
+        
         let totalCost = mortgageController.calculateTotalMortgageCost(mortgage: myMortgage)
+        
+        myMortgage.totalCost = Double(totalCost)
         
         // Updating and revealing the payment and total labels
         monthlyPaymentLabel.isHidden = false
         totalMortgageLabel.isHidden = false
         monthlyPaymentLabel.text = "$" + "\(myMortgagePayment)" + " per month"
         totalMortgageLabel.text  = "$\(totalCost)"
+     }
+    
+    @IBAction func saveButtonTapped(_ sender: Any){
+        guard let mortgage = currentMortgage else { print("No current mortgage to be found"); return}
+        mortgageController.savedMortgages.append(mortgage)
     }
+    
     
     // MARK: - Private
     private func updateViews() {
