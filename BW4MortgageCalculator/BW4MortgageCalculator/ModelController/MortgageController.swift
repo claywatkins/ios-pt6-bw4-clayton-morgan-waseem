@@ -74,4 +74,4 @@ class MortgageController {
 //        }
 //    }
     
-} //End of struct
+} //End of class

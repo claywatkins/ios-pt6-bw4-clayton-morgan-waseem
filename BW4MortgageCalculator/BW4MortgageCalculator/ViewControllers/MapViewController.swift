@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
 
     // MARK: - IBOutlet
-//    @IBOutlet weak var mapKit: MKMapView!
+    @IBOutlet weak var mapKit: MKMapView!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
