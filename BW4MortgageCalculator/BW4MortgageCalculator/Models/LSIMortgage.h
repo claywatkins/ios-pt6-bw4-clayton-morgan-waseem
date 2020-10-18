@@ -20,6 +20,11 @@ NS_SWIFT_NAME(Mortgage)
 
 - (instancetype)initWithTerm:(int)term principal:(int)principal interestRate:(double)interestRate downPayment:(int)downPayment montlyPayment:(double)montlyPayment totalCost:(double)totalCost;
 
+- (NSDictionary *)toDictionary;
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
