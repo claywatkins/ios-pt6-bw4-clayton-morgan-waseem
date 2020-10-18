@@ -60,18 +60,32 @@ class MortgageController {
     private var persistentFileURL: URL? {
         let fm = FileManager.default
         guard let directory = fm.urls(for: .documentDirectory, in: .userDomainMask) .first else { return nil}
-        return directory.appendingPathComponent("mortgages.plist")
+        return directory.appendingPathComponent("mortgages.json")
     }
     
-//    private func saveToPersistentStore(mortgage: Mortgage) {
-//        guard let url = persistentFileURL else { return }
-//        do {
-//            let encoder = PropertyListEncoder()
-////            let data = try encoder.encode(mortgage)
-//            try data.write(to:url)
-//        } catch {
-//            print("Error saving mortgage data: \(error)")
-//        }
-//    }
+    func saveToPersistentStore(mortgage: Mortgage) {
+        guard let url = persistentFileURL else { return }
+        do {
+            let dictionary = mortgage.toDictionary()
+            let data = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+            try data.write(to:url)
+            print("Save successful")
+        } catch {
+            print("Error saving mortgage data: \(error)")
+        }
+    }
+    
+    func loadFromPersistentStore() {
+        let fm = FileManager.default
+        guard let url = persistentFileURL, fm.fileExists(atPath: url.path) else { print("Could not find save data"); return}
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let json = try JSONSerialization.jsonObject(with: data, options: [])
+            
+        } catch {
+            print("Error decoding saved data: \(error)")
+        }
+    }
     
 } //End of class
