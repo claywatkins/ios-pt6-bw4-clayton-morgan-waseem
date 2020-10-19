@@ -455,13 +455,7 @@
                             <outlet property="delegate" destination="V6D-Wb-xvl" id="6Cx-ts-fDW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Saved Mortgages" id="AbY-aH-F2T">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Zr5-NJ-zR6">
-                            <connections>
-                                <action selector="refreshButtonTapped:" destination="V6D-Wb-xvl" id="3ln-Cc-p20"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Saved Mortgages" id="AbY-aH-F2T"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaW-Cu-kMQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
