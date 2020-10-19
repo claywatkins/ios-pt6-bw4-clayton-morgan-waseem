@@ -11,6 +11,7 @@ class MortgageController {
     
     // MARK: - Properties
     var savedMortgages: [Mortgage] = []
+//    var savedJsonMortgages: [String:AnyObject] = [:]
     
     // MARK: - Initalizer
     
@@ -66,10 +67,13 @@ class MortgageController {
     func saveToPersistentStore(mortgage: Mortgage) {
         guard let url = persistentFileURL else { return }
         do {
-            let dictionary = mortgage.toDictionary()
-            let data = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+            let dictionary = mortgage.toDictionary() as! [String:AnyObject]
+            var topLevel: [[String:AnyObject]] = [[:]]
+            topLevel.append(dictionary)
+            let data = try JSONSerialization.data(withJSONObject: topLevel, options: .prettyPrinted )
             try data.write(to:url)
             print("Save successful")
+            print("URL: \(url.absoluteString)")
         } catch {
             print("Error saving mortgage data: \(error)")
         }
@@ -81,11 +85,31 @@ class MortgageController {
         
         do {
             let data = try Data(contentsOf: url)
-            let json = try JSONSerialization.jsonObject(with: data, options: [])
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [[String:AnyObject]]
+            var temp: [Mortgage] = []
+            var loadedMortgages: [Mortgage] = []
+            for mortgage in json {
+//                print(mortgage)
+                let savedMortgage = Mortgage.init(dictionary: mortgage)
+                print("Saved Mortgage: \(savedMortgage.totalCost)")
+                temp.append(savedMortgage)
+                let completeMortgage = temp.filter {$0.totalCost != 0.0 }
+                loadedMortgages.append(contentsOf: completeMortgage)
+            }
+            self.savedMortgages = loadedMortgages
+//            var alreadyThere = Set<Mortgage>()
+//            let uniqueMortgages = loadedMortgages.compactMap { (mortgage) -> Mortgage? in
+//                guard !alreadyThere.contains(mortgage) else { return nil }
+//                alreadyThere.insert(mortgage)
+//                return mortgage
+//            }
             
+//            self.savedMortgages = uniqueMortgages
         } catch {
             print("Error decoding saved data: \(error)")
         }
     }
+    
+ 
     
 } //End of class
