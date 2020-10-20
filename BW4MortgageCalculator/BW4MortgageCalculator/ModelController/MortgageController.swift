@@ -11,6 +11,7 @@ class MortgageController {
     
     // MARK: - Properties
     var savedMortgages: [Mortgage] = []
+//    var savedJsonMortgages: [String:AnyObject] = [:]
     
     // MARK: - Initalizer
     
@@ -60,18 +61,55 @@ class MortgageController {
     private var persistentFileURL: URL? {
         let fm = FileManager.default
         guard let directory = fm.urls(for: .documentDirectory, in: .userDomainMask) .first else { return nil}
-        return directory.appendingPathComponent("mortgages.plist")
+        return directory.appendingPathComponent("mortgages.json")
     }
     
-//    private func saveToPersistentStore(mortgage: Mortgage) {
-//        guard let url = persistentFileURL else { return }
-//        do {
-//            let encoder = PropertyListEncoder()
-////            let data = try encoder.encode(mortgage)
-//            try data.write(to:url)
-//        } catch {
-//            print("Error saving mortgage data: \(error)")
-//        }
-//    }
+    func saveToPersistentStore(mortgage: Mortgage) {
+        guard let url = persistentFileURL else { return }
+        do {
+            let dictionary = mortgage.toDictionary() as! [String:AnyObject]
+            var topLevel: [[String:AnyObject]] = [[:]]
+            topLevel.append(dictionary)
+            let data = try JSONSerialization.data(withJSONObject: topLevel, options: .prettyPrinted )
+            try data.write(to:url)
+            print("Save successful")
+            print("URL: \(url.absoluteString)")
+        } catch {
+            print("Error saving mortgage data: \(error)")
+        }
+    }
+    
+    func loadFromPersistentStore() {
+        let fm = FileManager.default
+        guard let url = persistentFileURL, fm.fileExists(atPath: url.path) else { print("Could not find save data"); return}
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [[String:AnyObject]]
+            var temp: [Mortgage] = []
+            var loadedMortgages: [Mortgage] = []
+            for mortgage in json {
+//                print(mortgage)
+                let savedMortgage = Mortgage.init(dictionary: mortgage)
+                print("Saved Mortgage: \(savedMortgage.totalCost)")
+                temp.append(savedMortgage)
+                let completeMortgage = temp.filter {$0.totalCost != 0.0 }
+                loadedMortgages.append(contentsOf: completeMortgage)
+            }
+            self.savedMortgages = loadedMortgages
+//            var alreadyThere = Set<Mortgage>()
+//            let uniqueMortgages = loadedMortgages.compactMap { (mortgage) -> Mortgage? in
+//                guard !alreadyThere.contains(mortgage) else { return nil }
+//                alreadyThere.insert(mortgage)
+//                return mortgage
+//            }
+            
+//            self.savedMortgages = uniqueMortgages
+        } catch {
+            print("Error decoding saved data: \(error)")
+        }
+    }
+    
+ 
     
 } //End of class
