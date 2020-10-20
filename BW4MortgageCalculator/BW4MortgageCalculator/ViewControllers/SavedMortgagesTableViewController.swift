@@ -16,11 +16,6 @@ class SavedMortgagesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        mortgageController.loadFromPersistentStore()
-        self.tableView.reloadData()
-    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,11 +24,18 @@ class SavedMortgagesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MortgageCell", for: indexPath)
-        cell.textLabel?.text = "Mortgage"
+        cell.textLabel?.text = "Mortgage \(indexPath.row + 1)"
         cell.detailTextLabel?.text = "Total Mortgage Cost: $\(mortgageController.savedMortgages[indexPath.row].totalCost)"
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let mortgage = mortgageController.savedMortgages[indexPath.row]
+            mortgageController.deleteFromPersistentStore(mortgage: mortgage)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 

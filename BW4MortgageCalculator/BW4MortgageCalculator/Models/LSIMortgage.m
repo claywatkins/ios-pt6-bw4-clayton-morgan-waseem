@@ -21,7 +21,7 @@
     }
     return self;
 }
-
+// [AnyHashable:Any]
 // Turning our model into a dictionary
 - (NSDictionary *)toDictionary {
     return @{
@@ -36,17 +36,17 @@
 
 // Turning a dictionary into a model object
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-    NSNumber* termN = dictionary[@"term"];
+    NSNumber *termN = dictionary[@"term"];
     int term = [termN intValue];
-    NSNumber* principalN = dictionary[@"principal"];
+    NSNumber *principalN = dictionary[@"principal"];
     int principal = [principalN intValue];
-    NSNumber* interestRateN = dictionary[@"interest"];
+    NSNumber *interestRateN = dictionary[@"interest"];
     double interestRate = [interestRateN doubleValue];
-    NSNumber* downPaymentN = dictionary[@"downPayment"];
+    NSNumber *downPaymentN = dictionary[@"downPayment"];
     int downPayment = [downPaymentN intValue];
-    NSNumber* monthlyPaymentN = dictionary[@"monthlyPayment"];
+    NSNumber *monthlyPaymentN = dictionary[@"monthlyPayment"];
     double monthlyPayment = [monthlyPaymentN doubleValue];
-    NSNumber* totalCostN = dictionary[@"totalCost"];
+    NSNumber *totalCostN = dictionary[@"totalCost"];
     double totalCost = [totalCostN doubleValue];
     return [self initWithTerm:term principal:principal interestRate:interestRate downPayment:downPayment montlyPayment:monthlyPayment totalCost:totalCost];
 }

@@ -105,8 +105,8 @@ class MortgageCalculatorViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any){
         guard let mortgage = currentMortgage else { print("No current mortgage to be found"); return}
-//        mortgageController.savedMortgages.append(mortgage)
-        mortgageController.saveToPersistentStore(mortgage: mortgage)
+        mortgageController.savedMortgages.append(mortgage)
+        mortgageController.saveToPersistentStore()
     }
     
     
