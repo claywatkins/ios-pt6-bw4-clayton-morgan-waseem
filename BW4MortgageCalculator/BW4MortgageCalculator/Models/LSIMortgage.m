@@ -9,10 +9,11 @@
 
 @implementation LSIMortgage
 
-- (instancetype)initWithTerm:(int)term principal:(int)principal interestRate:(double)interestRate downPayment:(int)downPayment montlyPayment:(double)montlyPayment totalCost:(double)totalCost {
+- (instancetype)initWithTerm:(int)term name:(NSString *)name principal:(int)principal interestRate:(double)interestRate downPayment:(int)downPayment montlyPayment:(double)montlyPayment totalCost:(double)totalCost {
     
     if (self = [super init]) {
         _term = term;
+        _name = name;
         _principal = principal;
         _interestRate = interestRate;
         _downPayment = downPayment;
@@ -26,6 +27,7 @@
 - (NSDictionary *)toDictionary {
     return @{
         @"term": [NSNumber numberWithInt:self.term],
+        @"name": self.name,
         @"principal": [NSNumber numberWithInt:self.principal],
         @"interestRate": [NSNumber numberWithDouble:self.interestRate],
         @"downPayment": [NSNumber numberWithInt:self.downPayment],
@@ -38,6 +40,7 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     NSNumber *termN = dictionary[@"term"];
     int term = [termN intValue];
+    NSString *name = dictionary[@"name"];
     NSNumber *principalN = dictionary[@"principal"];
     int principal = [principalN intValue];
     NSNumber *interestRateN = dictionary[@"interest"];
@@ -48,7 +51,7 @@
     double monthlyPayment = [monthlyPaymentN doubleValue];
     NSNumber *totalCostN = dictionary[@"totalCost"];
     double totalCost = [totalCostN doubleValue];
-    return [self initWithTerm:term principal:principal interestRate:interestRate downPayment:downPayment montlyPayment:monthlyPayment totalCost:totalCost];
+    return [self initWithTerm:term name:name principal:principal interestRate:interestRate downPayment:downPayment montlyPayment:monthlyPayment totalCost:totalCost];
 }
 
 @end

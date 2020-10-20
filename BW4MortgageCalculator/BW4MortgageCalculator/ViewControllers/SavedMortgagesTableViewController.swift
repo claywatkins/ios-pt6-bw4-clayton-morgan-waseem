@@ -24,7 +24,7 @@ class SavedMortgagesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MortgageCell", for: indexPath)
-        cell.textLabel?.text = "Mortgage \(indexPath.row + 1)"
+        cell.textLabel?.text = mortgageController.savedMortgages[indexPath.row].name
         cell.detailTextLabel?.text = "Total Mortgage Cost: $\(mortgageController.savedMortgages[indexPath.row].totalCost)"
         return cell
     }

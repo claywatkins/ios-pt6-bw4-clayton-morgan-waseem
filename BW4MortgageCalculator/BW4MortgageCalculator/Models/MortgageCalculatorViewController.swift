@@ -83,7 +83,7 @@ class MortgageCalculatorViewController: UIViewController {
             present(interestAlertController, animated: true)
             return
         }
-        let myMortgage = Mortgage(term: term, principal: principal, interestRate: chosenInterest, downPayment: chosenDownPayment, montlyPayment: 0, totalCost: 0)
+        let myMortgage = Mortgage(term: term, name:"", principal: principal, interestRate: chosenInterest, downPayment: chosenDownPayment, montlyPayment: 0, totalCost: 0)
         self.currentMortgage = myMortgage
         // Calculating a mortgage payment
         let myMortgagePayment = mortgageController.calculateMortgagePayment(principal: myMortgage.principal,
@@ -105,8 +105,20 @@ class MortgageCalculatorViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any){
         guard let mortgage = currentMortgage else { print("No current mortgage to be found"); return}
-        mortgageController.savedMortgages.append(mortgage)
-        mortgageController.saveToPersistentStore()
+        let alert = UIAlertController(title: "Give your Mortgage a name", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Mortgage Name"
+        }
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak alert] _ in
+            let textField = alert?.textFields![0]
+            self.currentMortgage!.name = textField?.text
+            self.mortgageController.savedMortgages.append(mortgage)
+            self.mortgageController.saveToPersistentStore()
+        }))
+        self.present(alert, animated: true) {
+            print("Presented")
+        }
+    
     }
     
     
