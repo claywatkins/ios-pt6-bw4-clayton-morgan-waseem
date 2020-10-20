@@ -11,10 +11,11 @@ class MortgageController {
     
     // MARK: - Properties
     var savedMortgages: [Mortgage] = []
-//    var savedJsonMortgages: [String:AnyObject] = [:]
     
     // MARK: - Initalizer
-    
+    init() {
+        self.loadFromPersistentStore()
+    }
     /// Singleton property
     static let shared = MortgageController()
     
@@ -60,17 +61,15 @@ class MortgageController {
     
     private var persistentFileURL: URL? {
         let fm = FileManager.default
-        guard let directory = fm.urls(for: .documentDirectory, in: .userDomainMask) .first else { return nil}
+        let directory = fm.urls(for: .documentDirectory, in: .userDomainMask).first!
         return directory.appendingPathComponent("mortgages.json")
     }
     
-    func saveToPersistentStore(mortgage: Mortgage) {
+    func saveToPersistentStore() {
         guard let url = persistentFileURL else { return }
         do {
-            let dictionary = mortgage.toDictionary() as! [String:AnyObject]
-            var topLevel: [[String:AnyObject]] = [[:]]
-            topLevel.append(dictionary)
-            let data = try JSONSerialization.data(withJSONObject: topLevel, options: .prettyPrinted )
+            let dictionaries = savedMortgages.map { $0.toDictionary() }
+            let data = try JSONSerialization.data(withJSONObject: dictionaries, options: .prettyPrinted )
             try data.write(to:url)
             print("Save successful")
             print("URL: \(url.absoluteString)")
@@ -80,36 +79,29 @@ class MortgageController {
     }
     
     func loadFromPersistentStore() {
-        let fm = FileManager.default
-        guard let url = persistentFileURL, fm.fileExists(atPath: url.path) else { print("Could not find save data"); return}
+        guard let url = persistentFileURL else { print("Could not find save data"); return}
         
         do {
             let data = try Data(contentsOf: url)
-            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [[String:AnyObject]]
-            var temp: [Mortgage] = []
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [[AnyHashable:Any]]
             var loadedMortgages: [Mortgage] = []
-            for mortgage in json {
-//                print(mortgage)
-                let savedMortgage = Mortgage.init(dictionary: mortgage)
-                print("Saved Mortgage: \(savedMortgage.totalCost)")
-                temp.append(savedMortgage)
-                let completeMortgage = temp.filter {$0.totalCost != 0.0 }
-                loadedMortgages.append(contentsOf: completeMortgage)
+            
+            for mortgageDictionary in json {
+                let mortgage = Mortgage(dictionary: mortgageDictionary)
+                print("Saved Mortgage: \(mortgage.totalCost)")
+                loadedMortgages.append(mortgage)
             }
             self.savedMortgages = loadedMortgages
-//            var alreadyThere = Set<Mortgage>()
-//            let uniqueMortgages = loadedMortgages.compactMap { (mortgage) -> Mortgage? in
-//                guard !alreadyThere.contains(mortgage) else { return nil }
-//                alreadyThere.insert(mortgage)
-//                return mortgage
-//            }
-            
-//            self.savedMortgages = uniqueMortgages
+
         } catch {
             print("Error decoding saved data: \(error)")
         }
     }
     
- 
+    func deleteFromPersistentStore(mortgage: Mortgage) {
+        guard let index = savedMortgages.firstIndex(of: mortgage) else { print("Could not find mortgage"); return}
+        savedMortgages.remove(at: index)
+        self.saveToPersistentStore()
+    }
     
 } //End of class
