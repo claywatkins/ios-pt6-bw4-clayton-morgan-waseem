@@ -12,12 +12,8 @@ class MortgageDetailViewController: UIViewController {
     //MARK: - Properties and IBOutlets -
     
     // Properties
-    var mortgage: Mortgage? {
-        didSet {
-            updateViews()
-        }
-    }
-    let initialNickname = ""
+    let mortgageController = MortgageController.shared
+    var mortgage: Mortgage?
     
     // IBOutlets
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -34,13 +30,14 @@ class MortgageDetailViewController: UIViewController {
     // Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-//        initialNickname = mortgage.nickname
+        updateViews()
     }
     
     func updateViews() {
         guard let mortgage = mortgage else { return }
-//        title = mortgage.nickname
-//        nicknameTextField.text = mortgage.nickname
+        guard let nickname = mortgage.name else { return }
+        title = nickname
+        nicknameTextField.text = mortgage.name!
         totalCostLabel.text = "\(mortgage.totalCost)"
         monthlyPaymentLabel.text = "\(mortgage.monthlyPayment)"
         principalLabel.text = "\(mortgage.principal)"
@@ -51,11 +48,19 @@ class MortgageDetailViewController: UIViewController {
     
     // IBActions
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        
+        print("Add logic to update the name of saved mortgage in the model controller and call it in the detailViewController")
     }
     
     @IBAction func nicknameTextFieldValueChanged(_ sender: UITextField) {
-        saveButton.isEnabled = true
+        
+        if title != nicknameTextField.text {
+            saveButton.isEnabled = true
+        }
+        
+        if title == nicknameTextField.text {
+            saveButton.isEnabled = false
+        }
+        
     }
     
 } //End of class
