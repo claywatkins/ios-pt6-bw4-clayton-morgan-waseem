@@ -47,7 +47,14 @@ class SavedMortgagesTableViewController: UITableViewController {
     }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
+        if segue.identifier == "MortgageDetailSegue" {
+            let detailVC = segue.destination as! MortgageDetailViewController
+            let indexPath = tableView.indexPathForSelectedRow!
+            let selectedMortgage = mortgageController.savedMortgages[indexPath.row]
+            detailVC.mortgage = selectedMortgage
+        }
+        
     }
     
 }
