@@ -50,6 +50,7 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let coordinate: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         
     }
     
