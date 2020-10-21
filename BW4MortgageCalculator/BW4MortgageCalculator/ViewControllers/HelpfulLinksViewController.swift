@@ -25,8 +25,27 @@ class HelpfulLinksViewController: UIViewController {
     // This url is for .....
     let daveRamseyVideoURL = URL(string: "https://www.youtube.com/watch?v=d7tshuaQynA&ab_channel=TheDaveRamseyShow")!
     
-    //MARK: - IBActions -
+    //MARK: - IBOutlets -
+    @IBOutlet weak var buyerGuideButton: UIButton!
+    @IBOutlet weak var quizButton: UIButton!
+    @IBOutlet weak var videoButton: UIButton!
+    @IBOutlet weak var loansAndProgramsButton: UIButton!
+    @IBOutlet weak var buyerKnowledgeButton: UIButton!
+    @IBOutlet weak var daveRamseyVideoButton: UIButton!
     
+    //MARK: - Methods -
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        buyerGuideButton.layer.cornerRadius = 15
+        quizButton.layer.cornerRadius = 15
+        videoButton.layer.cornerRadius = 15
+        loansAndProgramsButton.layer.cornerRadius = 15
+        buyerKnowledgeButton.layer.cornerRadius = 15
+        daveRamseyVideoButton.layer.cornerRadius = 15
+    }
+    
+    //MARK: - IBActions -
+
     @IBAction func guideButtonTapped(_ sender: UIButton) {
         let safariVC = SFSafariViewController(url: buyerGuideURL)
         present(safariVC, animated: true)

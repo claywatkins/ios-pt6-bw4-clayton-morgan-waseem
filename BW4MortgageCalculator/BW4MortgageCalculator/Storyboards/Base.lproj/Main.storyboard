@@ -408,6 +408,14 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Helpful Links" image="globe" catalog="system" id="XTd-LH-GYh"/>
+                    <connections>
+                        <outlet property="buyerGuideButton" destination="GcF-X4-kTq" id="dEL-Hx-TR9"/>
+                        <outlet property="buyerKnowledgeButton" destination="DjB-Q0-sGM" id="vvA-xc-ovv"/>
+                        <outlet property="daveRamseyVideoButton" destination="Ry2-Pe-o5k" id="0J9-xD-M7H"/>
+                        <outlet property="loansAndProgramsButton" destination="ZW0-Dd-MdY" id="leK-Ny-6C7"/>
+                        <outlet property="quizButton" destination="Vst-oC-0tg" id="uya-rM-2JD"/>
+                        <outlet property="videoButton" destination="BbH-bN-nyv" id="kEc-yV-7tw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLI-9e-Vsa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
