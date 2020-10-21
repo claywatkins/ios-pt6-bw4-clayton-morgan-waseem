@@ -104,4 +104,11 @@ class MortgageController {
         self.saveToPersistentStore()
     }
     
+    func updateMortgageFromPersistentStore(mortgage: Mortgage, nickname: String) {
+        if let index = savedMortgages.firstIndex(of: mortgage) {
+            savedMortgages[index].name = nickname
+        }
+        saveToPersistentStore()
+    }
+    
 } //End of class

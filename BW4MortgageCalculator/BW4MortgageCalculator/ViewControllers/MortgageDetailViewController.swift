@@ -33,7 +33,7 @@ class MortgageDetailViewController: UIViewController {
         updateViews()
     }
     
-    func updateViews() {
+    private func updateViews() {
         guard let mortgage = mortgage else { return }
         guard let nickname = mortgage.name else { return }
         title = nickname
@@ -48,7 +48,9 @@ class MortgageDetailViewController: UIViewController {
     
     // IBActions
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        print("Add logic to update the name of saved mortgage in the model controller and call it in the detailViewController")
+        guard let mortgage = mortgage, let newNickname = nicknameTextField.text else { return }
+        mortgageController.updateMortgageFromPersistentStore(mortgage: mortgage, nickname: newNickname)
+        updateViews()
     }
     
     @IBAction func nicknameTextFieldValueChanged(_ sender: UITextField) {
