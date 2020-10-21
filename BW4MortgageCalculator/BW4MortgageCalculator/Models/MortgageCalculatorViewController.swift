@@ -19,6 +19,12 @@ class MortgageCalculatorViewController: UIViewController {
     @IBOutlet weak var loanTermLabel: UILabel!
     @IBOutlet weak var totalMortgageLabel: UILabel!
     @IBOutlet weak var monthlyPaymentLabel: UILabel!
+    @IBOutlet weak var firstView: UIView!
+    @IBOutlet weak var secondView: UIView!
+    @IBOutlet weak var thirdView: UIView!
+    @IBOutlet weak var loanTermButton: UIButton!
+    @IBOutlet weak var calculateButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     // MARK: - Properties
     var picker = UIPickerView()
@@ -50,6 +56,7 @@ class MortgageCalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        makeViewLookGood()
         
     }
     
@@ -127,6 +134,50 @@ class MortgageCalculatorViewController: UIViewController {
         // Updating interest rate label with slider value and getting the last two decimal places
         let interestRate = String(format: "%.2f", interestRateSlider.value)
         interestRateLabel.text = "%" + interestRate
+    }
+    
+    private func makeViewLookGood() {
+        // Parent View
+        self.view.backgroundColor = ColorsHelper.DarkSlateGreen
+        
+        // Upper most view on viewController
+        firstView.layer.cornerRadius = 10
+        firstView.backgroundColor = ColorsHelper.Nickel
+        firstView.layer.shadowColor = UIColor.black.cgColor
+        firstView.layer.shadowOpacity = 0.6
+        firstView.layer.shadowOffset = CGSize(width: -10, height: 10)
+        firstView.layer.shadowRadius = 5
+        
+        // Middle most view on viewController
+        secondView.layer.cornerRadius = 10
+        secondView.backgroundColor = ColorsHelper.Nickel
+        secondView.layer.shadowColor = UIColor.black.cgColor
+        secondView.layer.shadowOpacity = 0.6
+        secondView.layer.shadowOffset = CGSize(width: -10, height: 10)
+        secondView.layer.shadowRadius = 5
+        
+        // Lower most view on viewController
+        thirdView.layer.cornerRadius = 10
+        thirdView.backgroundColor = ColorsHelper.Nickel
+        thirdView.layer.shadowColor = UIColor.black.cgColor
+        thirdView.layer.shadowOpacity = 0.6
+        thirdView.layer.shadowOffset = CGSize(width: -10, height: 10)
+        thirdView.layer.shadowRadius = 5
+        
+        // Buttons
+        loanTermButton.layer.cornerRadius = 15
+        loanTermButton.backgroundColor = ColorsHelper.DarkSlateGreen
+        calculateButton.layer.cornerRadius = 15
+        calculateButton.backgroundColor = ColorsHelper.DarkSlateGreen
+        saveButton.layer.cornerRadius = 15
+        saveButton.backgroundColor = ColorsHelper.DarkSlateGreen
+        
+        // TextFields
+        mortgageAmountTextField.backgroundColor = ColorsHelper.LightGrey
+        downPaymentTextField.backgroundColor = ColorsHelper.LightGrey
+        
+        // Slider
+        interestRateSlider.tintColor = ColorsHelper.LaurelGreen
     }
     
     // Once done with PickerView, Done button removes the picker
