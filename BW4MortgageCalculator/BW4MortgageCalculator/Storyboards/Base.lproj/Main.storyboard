@@ -17,130 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JQl-bZ-aXy">
-                                <rect key="frame" x="20" y="309" width="374" height="102"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Down Payment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFc-7x-4eq">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flf-zs-v0j">
-                                        <rect key="frame" x="0.0" y="34" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Down payment here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TLZ-hQ-3K6">
-                                        <rect key="frame" x="0.0" y="68" width="374" height="34"/>
-                                        <color key="backgroundColor" red="0.87065751903553301" green="0.76165692811548846" blue="0.38763965087515462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="YPw-Pg-aZg" id="gDE-Iy-O1K"/>
-                                        </connections>
-                                    </textField>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tGs-6i-Yt8">
-                                <rect key="frame" x="20" y="431" width="374" height="98"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1y-qP-UqW">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rate%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4E1-Q2-eIQ">
-                                        <rect key="frame" x="0.0" y="34" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="40" translatesAutoresizingMaskIntoConstraints="NO" id="Usf-CC-M0D">
-                                        <rect key="frame" x="-2" y="68" width="378" height="31"/>
-                                        <connections>
-                                            <action selector="interestRateSilderChanged:" destination="YPw-Pg-aZg" eventType="valueChanged" id="X0d-Mh-z2B"/>
-                                        </connections>
-                                    </slider>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KyU-J7-zTq">
-                                <rect key="frame" x="20" y="549" width="374" height="64"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period (years)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ke-cg-kZj">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oz1-8M-fkI">
-                                        <rect key="frame" x="0.0" y="34" width="374" height="30"/>
-                                        <color key="backgroundColor" name="AccentColor"/>
-                                        <state key="normal" title="Select Loan Term">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="selectLoanTermButtonPressed:" destination="YPw-Pg-aZg" eventType="touchUpInside" id="P39-Sb-030"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vfh-Gj-yaJ">
-                                <rect key="frame" x="20" y="638" width="374" height="26.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Mortgage Cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFm-I5-8fd">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="$ Dollar amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wh-qD-PYu">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="0Lh-xH-eTO">
-                                <rect key="frame" x="20" y="684.5" width="374" height="21.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Monthly Payments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aS-hE-dPB">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ Dollar amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8u3-ua-8sX">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-uk-vwy">
-                                <rect key="frame" x="20" y="726" width="374" height="30"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <state key="normal" title="Calculate">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="calculateMortgageButtonPressed:" destination="YPw-Pg-aZg" eventType="touchUpInside" id="iwp-DM-H8S"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OT-YV-UAv">
-                                <rect key="frame" x="20" y="765" width="374" height="30"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="YPw-Pg-aZg" eventType="touchUpInside" id="MxS-13-uut"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67k-1c-mYB">
                                 <rect key="frame" x="20" y="64" width="374" height="205"/>
                                 <subviews>
@@ -178,53 +54,205 @@
                                     <constraint firstItem="HKG-fB-Oc3" firstAttribute="centerX" secondItem="67k-1c-mYB" secondAttribute="centerX" id="rJo-Sq-ca0"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFU-96-fVI">
+                                <rect key="frame" x="20" y="614" width="374" height="177"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Cst-qN-WQu">
+                                        <rect key="frame" x="8" y="7" width="358" height="162"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vfh-Gj-yaJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="358" height="26.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Mortgage Cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFm-I5-8fd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="358" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="$ Dollar amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wh-qD-PYu">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="0Lh-xH-eTO">
+                                                <rect key="frame" x="0.0" y="44.5" width="358" height="21.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Monthly Payments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aS-hE-dPB">
+                                                        <rect key="frame" x="0.0" y="0.0" width="358" height="21.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ Dollar amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8u3-ua-8sX">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="21.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-uk-vwy">
+                                                <rect key="frame" x="0.0" y="84" width="358" height="30"/>
+                                                <color key="backgroundColor" name="AccentColor"/>
+                                                <state key="normal" title="Calculate">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="calculateMortgageButtonPressed:" destination="YPw-Pg-aZg" eventType="touchUpInside" id="iwp-DM-H8S"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OT-YV-UAv">
+                                                <rect key="frame" x="0.0" y="132" width="358" height="30"/>
+                                                <color key="backgroundColor" name="AccentColor"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveButtonTapped:" destination="YPw-Pg-aZg" eventType="touchUpInside" id="MxS-13-uut"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Cst-qN-WQu" secondAttribute="bottom" constant="8" id="5gc-uJ-IzX"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cst-qN-WQu" secondAttribute="trailing" constant="8" id="7dl-L4-3JC"/>
+                                    <constraint firstItem="Cst-qN-WQu" firstAttribute="top" secondItem="jFU-96-fVI" secondAttribute="top" constant="7" id="8JY-dQ-BOx"/>
+                                    <constraint firstItem="Cst-qN-WQu" firstAttribute="leading" secondItem="jFU-96-fVI" secondAttribute="leading" constant="8" id="vGT-C5-7YL"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXd-JC-fQH">
+                                <rect key="frame" x="20" y="282" width="374" height="319"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="eaj-f6-cWV">
+                                        <rect key="frame" x="4" y="10" width="366" height="299"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WGr-4a-kfx">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="102"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Down Payment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYJ-Ef-36E">
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b82-NJ-OXB">
+                                                        <rect key="frame" x="0.0" y="34" width="366" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Down payment here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hRH-bg-D4z">
+                                                        <rect key="frame" x="0.0" y="68" width="366" height="34"/>
+                                                        <color key="backgroundColor" red="0.87065751899999999" green="0.76165692809999996" blue="0.38763965090000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="YPw-Pg-aZg" id="YLf-RT-SpT"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFY-j2-zx9">
+                                                <rect key="frame" x="0.0" y="117" width="366" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OTR-tH-rtn">
+                                                <rect key="frame" x="0.0" y="156" width="366" height="64"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rate%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQv-dW-k61">
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="40" translatesAutoresizingMaskIntoConstraints="NO" id="dgD-T7-GRB">
+                                                        <rect key="frame" x="-2" y="34" width="370" height="31"/>
+                                                        <connections>
+                                                            <action selector="interestRateSilderChanged:" destination="YPw-Pg-aZg" eventType="valueChanged" id="6c1-uk-D6S"/>
+                                                        </connections>
+                                                    </slider>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YqT-H9-jHM">
+                                                <rect key="frame" x="0.0" y="235" width="366" height="64"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period (years)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ynz-dB-SGE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ou-4g-xuK">
+                                                        <rect key="frame" x="0.0" y="34" width="366" height="30"/>
+                                                        <color key="backgroundColor" name="AccentColor"/>
+                                                        <state key="normal" title="Select Loan Term">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="selectLoanTermButtonPressed:" destination="YPw-Pg-aZg" eventType="touchUpInside" id="lmq-E3-h92"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="eaj-f6-cWV" secondAttribute="trailing" constant="4" id="7o9-dR-Hsl"/>
+                                    <constraint firstAttribute="bottom" secondItem="eaj-f6-cWV" secondAttribute="bottom" constant="10" id="FsK-ca-QQv"/>
+                                    <constraint firstItem="eaj-f6-cWV" firstAttribute="top" secondItem="MXd-JC-fQH" secondAttribute="top" constant="10" id="TOX-jq-gpt"/>
+                                    <constraint firstItem="eaj-f6-cWV" firstAttribute="centerX" secondItem="MXd-JC-fQH" secondAttribute="centerX" id="iIw-3k-dz0"/>
+                                    <constraint firstItem="eaj-f6-cWV" firstAttribute="centerY" secondItem="MXd-JC-fQH" secondAttribute="centerY" id="m2H-pE-T2V"/>
+                                    <constraint firstItem="eaj-f6-cWV" firstAttribute="leading" secondItem="MXd-JC-fQH" secondAttribute="leading" constant="4" id="nCk-de-ayg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nuO-6w-Ka5"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="0Lh-xH-eTO" secondAttribute="trailing" constant="20" id="2MS-i4-gSf"/>
-                            <constraint firstItem="nuO-6w-Ka5" firstAttribute="bottom" secondItem="2OT-YV-UAv" secondAttribute="bottom" constant="18" id="4Dp-U0-vFH"/>
-                            <constraint firstItem="0Lh-xH-eTO" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="4uc-Nf-N8h"/>
-                            <constraint firstItem="JQl-bZ-aXy" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="6Q8-7z-ll5"/>
-                            <constraint firstItem="KyU-J7-zTq" firstAttribute="top" secondItem="tGs-6i-Yt8" secondAttribute="bottom" constant="20" id="BRx-gy-Xi9"/>
-                            <constraint firstItem="KyU-J7-zTq" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="C2L-cY-piW"/>
+                            <constraint firstItem="MXd-JC-fQH" firstAttribute="top" secondItem="67k-1c-mYB" secondAttribute="bottom" constant="13" id="DXf-aX-Vap"/>
+                            <constraint firstItem="jFU-96-fVI" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="ELk-Wf-thB"/>
                             <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="67k-1c-mYB" secondAttribute="trailing" constant="20" id="F7Y-dv-OWj"/>
-                            <constraint firstItem="Eeb-uk-vwy" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="FvZ-Tx-e4V"/>
-                            <constraint firstItem="0Lh-xH-eTO" firstAttribute="top" secondItem="Vfh-Gj-yaJ" secondAttribute="bottom" constant="20" id="GW1-AU-vQa"/>
                             <constraint firstItem="67k-1c-mYB" firstAttribute="top" secondItem="nuO-6w-Ka5" secondAttribute="top" constant="20" id="Ggi-9v-ni8"/>
-                            <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="Eeb-uk-vwy" secondAttribute="trailing" constant="20" id="Gzi-Hu-DFZ"/>
-                            <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="Vfh-Gj-yaJ" secondAttribute="trailing" constant="20" id="Hb7-iF-ai9"/>
-                            <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="JQl-bZ-aXy" secondAttribute="trailing" constant="20" id="LZP-hA-5Xq"/>
-                            <constraint firstItem="Eeb-uk-vwy" firstAttribute="top" secondItem="0Lh-xH-eTO" secondAttribute="bottom" constant="20" id="OJ3-Gc-tzY"/>
                             <constraint firstItem="67k-1c-mYB" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="PGq-Md-gQ3"/>
-                            <constraint firstItem="2OT-YV-UAv" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="QcB-g7-4eM"/>
-                            <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="tGs-6i-Yt8" secondAttribute="trailing" constant="20" id="RgZ-Eq-pIt"/>
-                            <constraint firstItem="tGs-6i-Yt8" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="WLx-Df-nKs"/>
-                            <constraint firstItem="Vfh-Gj-yaJ" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="fj7-BU-z8t"/>
-                            <constraint firstItem="tGs-6i-Yt8" firstAttribute="top" secondItem="JQl-bZ-aXy" secondAttribute="bottom" constant="20" id="jX4-1x-FnS"/>
-                            <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="2OT-YV-UAv" secondAttribute="trailing" constant="20" id="lAL-1p-ZdV"/>
-                            <constraint firstItem="Vfh-Gj-yaJ" firstAttribute="top" secondItem="KyU-J7-zTq" secondAttribute="bottom" constant="25" id="q7i-JB-CWH"/>
-                            <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="KyU-J7-zTq" secondAttribute="trailing" constant="20" id="sQr-1V-dre"/>
-                            <constraint firstItem="JQl-bZ-aXy" firstAttribute="top" secondItem="67k-1c-mYB" secondAttribute="bottom" constant="40" id="saq-ru-otg"/>
+                            <constraint firstItem="jFU-96-fVI" firstAttribute="top" secondItem="MXd-JC-fQH" secondAttribute="bottom" constant="13" id="Pvl-yz-q69"/>
+                            <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="MXd-JC-fQH" secondAttribute="trailing" constant="20" id="aE3-s8-XYJ"/>
+                            <constraint firstItem="MXd-JC-fQH" firstAttribute="leading" secondItem="nuO-6w-Ka5" secondAttribute="leading" constant="20" id="lyG-CA-jGl"/>
+                            <constraint firstItem="nuO-6w-Ka5" firstAttribute="bottom" secondItem="jFU-96-fVI" secondAttribute="bottom" constant="22" id="p9n-jg-myQ"/>
+                            <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="jFU-96-fVI" secondAttribute="trailing" constant="20" id="tQE-JW-Ub8"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calculator" image="plusminus" catalog="system" selectedImage="plusminus" id="BrH-Na-BEW"/>
                     <navigationItem key="navigationItem" id="ipF-M6-9UE"/>
                     <connections>
-                        <outlet property="downPaymentLabel" destination="Flf-zs-v0j" id="h1J-aD-o1G"/>
-                        <outlet property="downPaymentTextField" destination="TLZ-hQ-3K6" id="LHB-T7-LH9"/>
-                        <outlet property="interestRateLabel" destination="4E1-Q2-eIQ" id="Lje-9E-oC3"/>
-                        <outlet property="interestRateSlider" destination="Usf-CC-M0D" id="cT1-2g-0gF"/>
-                        <outlet property="loanTermLabel" destination="8Ke-cg-kZj" id="PgX-rX-PNZ"/>
+                        <outlet property="calculateButton" destination="Eeb-uk-vwy" id="MAX-4J-5iG"/>
+                        <outlet property="downPaymentLabel" destination="b82-NJ-OXB" id="MMY-py-m9e"/>
+                        <outlet property="downPaymentTextField" destination="hRH-bg-D4z" id="DhS-ma-TeW"/>
+                        <outlet property="firstView" destination="67k-1c-mYB" id="pLe-c1-4iB"/>
+                        <outlet property="interestRateLabel" destination="DQv-dW-k61" id="3aq-0w-fAy"/>
+                        <outlet property="interestRateSlider" destination="dgD-T7-GRB" id="YeY-XY-ppQ"/>
+                        <outlet property="loanTermButton" destination="6Ou-4g-xuK" id="mWa-WZ-hkl"/>
+                        <outlet property="loanTermLabel" destination="Ynz-dB-SGE" id="3uX-wJ-yE2"/>
                         <outlet property="monthlyPaymentLabel" destination="8u3-ua-8sX" id="nFj-6V-gHd"/>
                         <outlet property="mortgageAmountLabel" destination="j1D-5a-uEZ" id="Yxx-Qp-4Zz"/>
                         <outlet property="mortgageAmountTextField" destination="yi5-9i-0tF" id="q4V-uv-d1e"/>
+                        <outlet property="saveButton" destination="2OT-YV-UAv" id="BjX-T0-kSX"/>
+                        <outlet property="secondView" destination="MXd-JC-fQH" id="3GU-0W-0Ss"/>
+                        <outlet property="thirdView" destination="jFU-96-fVI" id="wWf-DW-It9"/>
                         <outlet property="totalMortgageLabel" destination="0wh-qD-PYu" id="Lz4-6b-LKp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LeR-mt-vpv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2117" y="58"/>
+            <point key="canvasLocation" x="2115.9420289855075" y="57.589285714285708"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pBh-FO-qJB">
@@ -749,8 +777,8 @@
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
