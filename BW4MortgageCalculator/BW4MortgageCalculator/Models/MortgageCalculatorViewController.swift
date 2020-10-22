@@ -41,6 +41,8 @@ class MortgageCalculatorViewController: UIViewController {
     // Variable to keep track of current created Mortgage
     var currentMortgage: Mortgage?
     
+     
+    
     // Variables that store UIAlertControllers that are ready to be presented at any time
     var interestAlertController: UIAlertController {
         let alert = UIAlertController(title: "Please adjust the interest rate slider",
@@ -61,7 +63,9 @@ class MortgageCalculatorViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         makeViewLookGood()
-        animateViews()
+        if mortgageController.animationsDisabled == false {
+            animateViews()
+        }
     }
     
     // MARK: - IBActions

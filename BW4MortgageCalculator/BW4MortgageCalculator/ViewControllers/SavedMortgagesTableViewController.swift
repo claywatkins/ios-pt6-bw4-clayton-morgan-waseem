@@ -21,7 +21,9 @@ class SavedMortgagesTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        animateTable()
+        if mortgageController.animationsDisabled == false {
+            animateTable()            
+        }
     }
 
     // MARK: - Table view data source

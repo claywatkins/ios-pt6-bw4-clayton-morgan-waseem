@@ -48,6 +48,7 @@ class LoginViewController: UIViewController {
         mortgageController.currentUser = username
         mortgageController.loggedInBool = true
         UserDefaults.standard.setValue(mortgageController.loggedInBool, forKey: "loggedIn")
+        UserDefaults.standard.setValue(false, forKey: "animations")
         segueIfUsernameExists()
     }
     
