@@ -13,7 +13,7 @@ class MapViewController: UIViewController {
     //MARK: - Properties -
     var userAnnotation: MKAnnotation? {
         didSet {
-            mapView.addAnnotation(userAnnotation!)
+            showUserLocation()
         }
     }
     var fetchingAlert: UIAlertController {
@@ -52,6 +52,14 @@ class MapViewController: UIViewController {
         selfLocationButton.layer.cornerRadius = 23
         selfLocationButton.layer.borderWidth = 0.5
         selfLocationButton.layer.borderColor = UIColor.gray.cgColor
+    }
+    
+    func showUserLocation() {
+        if let userAnnotation = userAnnotation {
+            mapView.showAnnotations([userAnnotation], animated: true)
+        } else {
+            print("Could not add or show user's location annotation, location not found!")
+        }
     }
     
     //MARK: - IBActions -
