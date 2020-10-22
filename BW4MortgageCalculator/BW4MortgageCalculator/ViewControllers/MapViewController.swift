@@ -9,14 +9,21 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
+    
+    //MARK: - Properties -
+    var userAnnotation: MKAnnotation? {
+        didSet {
+            mapView.addAnnotation(userAnnotation!)
+        }
+    }
 
     // MARK: - IBOutlet
-    @IBOutlet weak var mapKit: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Methods -
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        fetchUserLocation()
     }
     
     func fetchUserLocation() {
@@ -51,7 +58,8 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let coordinate: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        
+        let userAnnotation = Annotation(title: nil, subtitle: nil, coordinate: coordinate)
+        self.userAnnotation = userAnnotation
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

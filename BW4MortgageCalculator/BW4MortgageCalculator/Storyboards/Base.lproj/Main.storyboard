@@ -271,7 +271,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map.fill" catalog="system" id="fMv-Wc-8TJ"/>
                     <connections>
-                        <outlet property="mapKit" destination="7ts-kp-oTZ" id="g0Y-L8-1bW"/>
+                        <outlet property="mapView" destination="7ts-kp-oTZ" id="g0Y-L8-1bW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmA-ti-jti" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
