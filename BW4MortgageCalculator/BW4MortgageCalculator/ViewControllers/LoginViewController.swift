@@ -36,8 +36,9 @@ class LoginViewController: UIViewController {
     
     // MARK: - Private Methods
     private func segueIfUsernameExists() {
-        if UserDefaults.standard.bool(forKey: "loggedIn"){
+        if UserDefaults.standard.bool(forKey: "loggedIn") && mortgageController.currentUser != nil{
             performSegue(withIdentifier: "LoginSegue", sender: self)
+            nameTextField.text = ""
           }
       }
     

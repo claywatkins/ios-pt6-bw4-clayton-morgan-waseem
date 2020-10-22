@@ -16,6 +16,7 @@ class MortgageController {
     var isLoggedIn: Bool? {
         UserDefaults.standard.bool(forKey: "loggedIn")
     }
+    var animationOnBool: Bool?
     var animationsOn: Bool? {
         UserDefaults.standard.bool(forKey: "animation")
     }
