@@ -106,8 +106,14 @@ class MortgageCalculatorViewController: UIViewController {
         // Updating and revealing the payment and total labels
         monthlyPaymentLabel.isHidden = false
         totalMortgageLabel.isHidden = false
-        monthlyPaymentLabel.text = "$" + "\(myMortgagePayment)" + " per month"
-        totalMortgageLabel.text  = "$\(totalCost)"
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let formattedMonthlyPayment = numberFormatter.string(from: NSNumber(value: myMortgage.monthlyPayment))!
+        let formattedTotalCost = numberFormatter.string(from: NSNumber(value: myMortgage.totalCost))!
+
+        monthlyPaymentLabel.text = "$" + formattedMonthlyPayment + " per month"
+        totalMortgageLabel.text  = "$" + formattedTotalCost
      }
     
     @IBAction func saveButtonTapped(_ sender: Any){
@@ -187,10 +193,6 @@ class MortgageCalculatorViewController: UIViewController {
         picker.removeFromSuperview()
     }
     
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
 }
 
 // MARK: - Extension -
@@ -204,7 +206,13 @@ extension MortgageCalculatorViewController: UITextFieldDelegate {
             // This formats the string so that the string will only return a number with two decimal places
             let downPayment = Double(downPaymentTextField.text!)
             chosenDownPayment = Int32(downPayment!)
-            downPaymentLabel.text = "$" + String(format: "%.2f", downPayment!)
+            
+            // Formats number to look nicer and adds commas
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            let formattedNumber = numberFormatter.string(from: NSNumber(value: chosenDownPayment))!
+            
+            downPaymentLabel.text = "$" + String(formattedNumber)
             downPaymentTextField.resignFirstResponder()
         }
         
@@ -212,7 +220,13 @@ extension MortgageCalculatorViewController: UITextFieldDelegate {
             // This formats the string so that the string will only return a number with two decimal places
             let mortgageAmount = Double(mortgageAmountTextField.text!)
             chosenPrincipal = Int32(mortgageAmount!)
-            mortgageAmountLabel.text = "$" + String(format: "%.2f", mortgageAmount!)
+            
+            // Formats number to look nicer and adds commas
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            let formattedNumber = numberFormatter.string(from: NSNumber(value: chosenPrincipal!))!
+            
+            mortgageAmountLabel.text = "$" + String(formattedNumber)
             
             if mortgageAmountTextField.isFirstResponder {
                 downPaymentTextField.becomeFirstResponder()
