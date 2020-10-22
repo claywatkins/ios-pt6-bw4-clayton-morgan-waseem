@@ -259,12 +259,29 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7ts-kp-oTZ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eZ-3S-RpB">
+                                <rect key="frame" x="334" y="733" width="45" height="45"/>
+                                <color key="backgroundColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="R3w-ho-l0a"/>
+                                    <constraint firstAttribute="height" constant="45" id="Y7p-5L-NcX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" image="location.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="selfLocationButtonTapped:" destination="rXu-Re-p2U" eventType="touchUpInside" id="Bw1-kC-hj7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7jr-DS-NXX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7ts-kp-oTZ" firstAttribute="trailing" secondItem="7jr-DS-NXX" secondAttribute="trailing" id="5Hj-Kz-KAh"/>
+                            <constraint firstItem="0eZ-3S-RpB" firstAttribute="bottom" secondItem="7ts-kp-oTZ" secondAttribute="bottom" constant="-35" id="CBG-lh-7iG"/>
                             <constraint firstItem="7ts-kp-oTZ" firstAttribute="bottom" secondItem="7jr-DS-NXX" secondAttribute="bottom" id="NML-ab-Uat"/>
+                            <constraint firstItem="0eZ-3S-RpB" firstAttribute="trailing" secondItem="7ts-kp-oTZ" secondAttribute="trailing" constant="-35" id="hNF-a8-uJy"/>
                             <constraint firstItem="7ts-kp-oTZ" firstAttribute="leading" secondItem="7jr-DS-NXX" secondAttribute="leading" id="p0b-92-ZLk"/>
                             <constraint firstItem="7ts-kp-oTZ" firstAttribute="top" secondItem="7jr-DS-NXX" secondAttribute="top" id="qu2-mi-tED"/>
                         </constraints>
@@ -272,6 +289,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map.fill" catalog="system" id="fMv-Wc-8TJ"/>
                     <connections>
                         <outlet property="mapView" destination="7ts-kp-oTZ" id="g0Y-L8-1bW"/>
+                        <outlet property="selfLocationButton" destination="0eZ-3S-RpB" id="hxy-uT-ECs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmA-ti-jti" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -738,6 +756,7 @@
     <resources>
         <image name="globe" catalog="system" width="128" height="121"/>
         <image name="house.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="plusminus" catalog="system" width="116" height="128"/>
         <namedColor name="AccentColor">

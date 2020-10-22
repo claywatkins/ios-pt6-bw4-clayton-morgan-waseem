@@ -19,11 +19,12 @@ class MapViewController: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var selfLocationButton: UIButton!
     
     // MARK: - Methods -
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchUserLocation()
+        configureLocationButton()
     }
     
     func fetchUserLocation() {
@@ -32,6 +33,18 @@ class MapViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestLocation()
     }
+    
+    func configureLocationButton() {
+        selfLocationButton.layer.cornerRadius = 23
+        selfLocationButton.layer.borderWidth = 0.5
+        selfLocationButton.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    //MARK: - IBActions -
+    @IBAction func selfLocationButtonTapped(_ sender: UIButton) {
+        fetchUserLocation()
+    }
+    
 } //End of class
 
 //MARK: - Extensions -
