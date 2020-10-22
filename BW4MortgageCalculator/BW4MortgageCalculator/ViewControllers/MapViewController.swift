@@ -49,7 +49,7 @@ class MapViewController: UIViewController {
     }
     
     func configureLocationButton() {
-        selfLocationButton.layer.cornerRadius = 23
+        selfLocationButton.layer.cornerRadius = 10
         selfLocationButton.layer.borderWidth = 0.5
         selfLocationButton.layer.borderColor = UIColor.gray.cgColor
     }
