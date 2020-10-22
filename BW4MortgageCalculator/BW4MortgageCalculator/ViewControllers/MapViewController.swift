@@ -16,6 +16,19 @@ class MapViewController: UIViewController {
             mapView.addAnnotation(userAnnotation!)
         }
     }
+    var fetchingAlert: UIAlertController {
+        let title = "Fetching..."
+        let message = "Please wait while we fetch your location"
+        return UIAlertController(title: title, message: message, preferredStyle: .alert)
+    }
+    var fetchFailAlert: UIAlertController {
+        let title = "Could not fetch location"
+        let message = "Sorry, but it seems that we were unable to fetch your location. Please check your internet connection and location services"
+        let action = UIAlertAction(title: "OK", style: .default)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(action)
+        return alert
+    }
 
     // MARK: - IBOutlet
     @IBOutlet weak var mapView: MKMapView!
@@ -28,6 +41,7 @@ class MapViewController: UIViewController {
     }
     
     func fetchUserLocation() {
+        present(fetchingAlert, animated: true)
         let locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -37,7 +51,7 @@ class MapViewController: UIViewController {
     func configureLocationButton() {
         selfLocationButton.layer.cornerRadius = 23
         selfLocationButton.layer.borderWidth = 0.5
-        selfLocationButton.layer.borderColor = UIColor.black.cgColor
+        selfLocationButton.layer.borderColor = UIColor.gray.cgColor
     }
     
     //MARK: - IBActions -
@@ -71,12 +85,21 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let coordinate: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        let userAnnotation = Annotation(title: nil, subtitle: nil, coordinate: coordinate)
+        let userAnnotation = Annotation(title: "You :)", subtitle: "This is your location", coordinate: coordinate)
         self.userAnnotation = userAnnotation
+        
+        DispatchQueue.main.async {
+            self.dismiss(animated: true)
+        }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
+        DispatchQueue.main.async {
+            self.dismiss(animated: true)
+            self.present(self.fetchFailAlert, animated: true)
+        }
     }
     
 }
