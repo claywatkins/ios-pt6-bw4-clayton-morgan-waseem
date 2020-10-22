@@ -51,13 +51,11 @@ class MortgageCalculatorViewController: UIViewController {
         return alert
     }
     
-
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
         makeViewLookGood()
-        
     }
     
     // MARK: - IBActions
@@ -71,7 +69,7 @@ class MortgageCalculatorViewController: UIViewController {
     @IBAction func selectLoanTermButtonPressed(_ sender: Any) {
         // Programatically presenting a UIPickerView
         picker.delegate = self
-        picker.backgroundColor = UIColor.white
+        picker.backgroundColor = ColorsHelper.LaurelGreen
         picker.setValue(UIColor.black, forKey: "textColor")
         picker.autoresizingMask = .flexibleWidth
         picker.contentMode = .center
@@ -79,6 +77,7 @@ class MortgageCalculatorViewController: UIViewController {
         self.view.addSubview(picker)
         
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.barTintColor = ColorsHelper.LaurelGreen
         toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
     }
@@ -184,7 +183,7 @@ class MortgageCalculatorViewController: UIViewController {
         
         // Slider
         interestRateSlider.tintColor = ColorsHelper.LaurelGreen
-        interestRateSlider.thumbTintColor = ColorsHelper.Nickel
+
     }
     
     // Once done with PickerView, Done button removes the picker

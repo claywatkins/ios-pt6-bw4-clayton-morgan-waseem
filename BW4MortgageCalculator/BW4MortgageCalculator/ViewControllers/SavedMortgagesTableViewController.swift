@@ -15,6 +15,8 @@ class SavedMortgagesTableViewController: UITableViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = ColorsHelper.DarkSlateGreen
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,11 +32,8 @@ class SavedMortgagesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MortgageTableViewCell.reuseIdentifier, for: indexPath) as? MortgageTableViewCell else { return UITableViewCell()}
         cell.mortgage = mortgageController.savedMortgages[indexPath.row]
-        
-//        if mortgageController.savedMortgages[indexPath.row].name == "" {
-//            cell.textLabel?.text = "Mortgage \(indexPath.row + 1)"
-//        }
-//        cell.detailTextLabel?.text = "Total Mortgage Cost: $\(mortgageController.savedMortgages[indexPath.row].totalCost)"
+       
+        cell.cellView.layer.cornerRadius = 15
         return cell
     }
     
