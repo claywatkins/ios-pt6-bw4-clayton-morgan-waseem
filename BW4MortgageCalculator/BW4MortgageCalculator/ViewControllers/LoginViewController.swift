@@ -16,14 +16,30 @@ class LoginViewController: UIViewController {
     // MARK: - Properties
     let defaults = UserDefaults.standard
     let mortgageController = MortgageController.shared
+    var alert: UIAlertController {
+        let alert = UIAlertController(title: "No Username", message: "Please enter a username", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        return alert
+    }
     
     // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        segueIfUsernameExists()
     }
+    
+    
+    // MARK: - Private Methods
+    private func segueIfUsernameExists() {
+          if UserDefaults.standard.string(forKey: "username") != nil {
+            performSegue(withIdentifier: "LoginSegue", sender: nil)
+          }
+      }
     
     // MARK: - IBAction
     @IBAction func loginButtonTapped(_ sender: Any) {
-        
+        guard let username = nameTextField.text, !username.isEmpty else { self.present(alert, animated: true, completion: nil); return}
+        UserDefaults.standard.setValue(username, forKey: "username")
+        segueIfUsernameExists()
     }
 }
