@@ -41,6 +41,8 @@ class MortgageCalculatorViewController: UIViewController {
     // Variable to keep track of current created Mortgage
     var currentMortgage: Mortgage?
     
+     
+    
     // Variables that store UIAlertControllers that are ready to be presented at any time
     var interestAlertController: UIAlertController {
         let alert = UIAlertController(title: "Please adjust the interest rate slider",
@@ -51,13 +53,19 @@ class MortgageCalculatorViewController: UIViewController {
         return alert
     }
     
-
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
         makeViewLookGood()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        makeViewLookGood()
+        if mortgageController.animationsDisabled == false {
+            animateViews()
+        }
     }
     
     // MARK: - IBActions
@@ -71,7 +79,7 @@ class MortgageCalculatorViewController: UIViewController {
     @IBAction func selectLoanTermButtonPressed(_ sender: Any) {
         // Programatically presenting a UIPickerView
         picker.delegate = self
-        picker.backgroundColor = UIColor.white
+        picker.backgroundColor = ColorsHelper.LaurelGreen
         picker.setValue(UIColor.black, forKey: "textColor")
         picker.autoresizingMask = .flexibleWidth
         picker.contentMode = .center
@@ -79,11 +87,25 @@ class MortgageCalculatorViewController: UIViewController {
         self.view.addSubview(picker)
         
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.barTintColor = ColorsHelper.LaurelGreen
         toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
     }
     
     @IBAction func calculateMortgageButtonPressed(_ sender: Any) {
+        // Error Handling
+        if chosenDownPayment > chosenPrincipal! {
+            let alert = UIAlertController(title: "Error", message: "Down payment is larger than Mortgage Amount", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        if chosenTerm == nil {
+            let alert = UIAlertController(title: "Missing Loan Term", message: "Please select a loan term", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
         // Creating a mortgage
         guard let term = chosenTerm, let principal = chosenPrincipal else { return }
         guard chosenInterest != 0 else {
@@ -97,6 +119,8 @@ class MortgageCalculatorViewController: UIViewController {
                                                                             downPayment: myMortgage.downPayment,
                                                                             term: myMortgage.term,
                                                                             interestRate: myMortgage.interestRate)
+        
+        // Running Calculations if everyting is good
         myMortgage.monthlyPayment = Double(myMortgagePayment)
         
         let totalCost = mortgageController.calculateTotalMortgageCost(mortgage: myMortgage)
@@ -106,26 +130,48 @@ class MortgageCalculatorViewController: UIViewController {
         // Updating and revealing the payment and total labels
         monthlyPaymentLabel.isHidden = false
         totalMortgageLabel.isHidden = false
-        monthlyPaymentLabel.text = "$" + "\(myMortgagePayment)" + " per month"
-        totalMortgageLabel.text  = "$\(totalCost)"
-     }
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let formattedMonthlyPayment = numberFormatter.string(from: NSNumber(value: myMortgage.monthlyPayment))!
+        let formattedTotalCost = numberFormatter.string(from: NSNumber(value: myMortgage.totalCost))!
+        
+        monthlyPaymentLabel.text = "$" + formattedMonthlyPayment + " per month"
+        totalMortgageLabel.text  = "$" + formattedTotalCost
+        
+    }
     
     @IBAction func saveButtonTapped(_ sender: Any){
         guard let mortgage = currentMortgage else { print("No current mortgage to be found"); return}
+        
+        // Error Handling
+        if mortgage.downPayment > mortgage.principal {
+            let alert = UIAlertController(title: "Error", message: "Down payment is larger than Mortgage Amount", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        // Adding a name to your Mortgage
         let alert = UIAlertController(title: "Give your Mortgage a name", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Mortgage Name"
         }
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak alert] _ in
             let textField = alert?.textFields![0]
-            self.currentMortgage!.name = textField?.text
-            self.mortgageController.savedMortgages.append(mortgage)
-            self.mortgageController.saveToPersistentStore()
+            if let text = textField!.text, !text.isEmpty {
+                self.currentMortgage!.name = text
+                self.mortgageController.savedMortgages.append(mortgage)
+                self.mortgageController.saveToPersistentStore()
+            } else {
+                let alert = UIAlertController(title: "Mortgage Not Saved", message: "Please enter a name for your mortgage", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }))
         self.present(alert, animated: true) {
             print("Presented")
         }
-    
+        
     }
     
     
@@ -178,6 +224,7 @@ class MortgageCalculatorViewController: UIViewController {
         
         // Slider
         interestRateSlider.tintColor = ColorsHelper.LaurelGreen
+        
     }
     
     // Once done with PickerView, Done button removes the picker
@@ -186,10 +233,21 @@ class MortgageCalculatorViewController: UIViewController {
         picker.removeFromSuperview()
     }
     
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+    private func animateViews() {
+        let views = [firstView, secondView, thirdView]
+        let viewControllerHeight = self.view.bounds.size.height
+        for view in views{
+            view!.transform = CGAffineTransform(translationX: 0, y: viewControllerHeight)
+        }
+        var delayCounter = 0
+        for view in views {
+            UIView.animate(withDuration: 1.75, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                view!.transform = CGAffineTransform.identity
+                }, completion: nil)
+            delayCounter += 1
+        }
     }
+    
 }
 
 // MARK: - Extension -
@@ -203,7 +261,13 @@ extension MortgageCalculatorViewController: UITextFieldDelegate {
             // This formats the string so that the string will only return a number with two decimal places
             let downPayment = Double(downPaymentTextField.text!)
             chosenDownPayment = Int32(downPayment!)
-            downPaymentLabel.text = "$" + String(format: "%.2f", downPayment!)
+            
+            // Formats number to look nicer and adds commas
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            let formattedNumber = numberFormatter.string(from: NSNumber(value: chosenDownPayment))!
+            
+            downPaymentLabel.text = "$" + String(formattedNumber)
             downPaymentTextField.resignFirstResponder()
         }
         
@@ -211,7 +275,13 @@ extension MortgageCalculatorViewController: UITextFieldDelegate {
             // This formats the string so that the string will only return a number with two decimal places
             let mortgageAmount = Double(mortgageAmountTextField.text!)
             chosenPrincipal = Int32(mortgageAmount!)
-            mortgageAmountLabel.text = "$" + String(format: "%.2f", mortgageAmount!)
+            
+            // Formats number to look nicer and adds commas
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            let formattedNumber = numberFormatter.string(from: NSNumber(value: chosenPrincipal!))!
+            
+            mortgageAmountLabel.text = "$" + String(formattedNumber)
             
             if mortgageAmountTextField.isFirstResponder {
                 downPaymentTextField.becomeFirstResponder()
