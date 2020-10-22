@@ -58,6 +58,11 @@ class MortgageCalculatorViewController: UIViewController {
         makeViewLookGood()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animateViews()
+    }
+    
     // MARK: - IBActions
     @IBAction func interestRateSilderChanged(_ sender: UISlider) {
         // Rounding the slider value
@@ -221,6 +226,21 @@ class MortgageCalculatorViewController: UIViewController {
     @objc private func onDoneButtonTapped() {
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
+    }
+    
+    private func animateViews() {
+        let views = [firstView, secondView, thirdView]
+        let viewControllerHeight = self.view.bounds.size.height
+        for view in views{
+            view!.transform = CGAffineTransform(translationX: 0, y: viewControllerHeight)
+        }
+        var delayCounter = 0
+        for view in views {
+            UIView.animate(withDuration: 1.75, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                view!.transform = CGAffineTransform.identity
+                }, completion: nil)
+            delayCounter += 1
+        }
     }
     
 }
