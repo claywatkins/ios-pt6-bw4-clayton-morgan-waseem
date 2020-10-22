@@ -23,6 +23,11 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loginButton.layer.cornerRadius = 15
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         segueIfUsernameExists()
@@ -31,15 +36,20 @@ class LoginViewController: UIViewController {
     
     // MARK: - Private Methods
     private func segueIfUsernameExists() {
-          if UserDefaults.standard.string(forKey: "username") != nil {
-            performSegue(withIdentifier: "LoginSegue", sender: nil)
+        if UserDefaults.standard.bool(forKey: "loggedIn"){
+            performSegue(withIdentifier: "LoginSegue", sender: self)
           }
       }
     
     // MARK: - IBAction
     @IBAction func loginButtonTapped(_ sender: Any) {
         guard let username = nameTextField.text, !username.isEmpty else { self.present(alert, animated: true, completion: nil); return}
-        UserDefaults.standard.setValue(username, forKey: "username")
+        mortgageController.currentUser = username
+        mortgageController.loggedInBool = true
+        UserDefaults.standard.setValue(mortgageController.loggedInBool, forKey: "loggedIn")
         segueIfUsernameExists()
+    }
+    
+    @IBAction func unwind( _seg: UIStoryboardSegue) {
     }
 }

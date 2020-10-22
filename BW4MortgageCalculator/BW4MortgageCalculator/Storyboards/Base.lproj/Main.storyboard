@@ -260,7 +260,7 @@
         <!--Login View Controller-->
         <scene sceneID="bNT-pP-cMh">
             <objects>
-                <viewController id="nwh-Mb-kMP" customClass="LoginViewController" customModule="BW4MortgageCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="logInController" id="nwh-Mb-kMP" customClass="LoginViewController" customModule="BW4MortgageCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nx5-Dz-2z0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -337,7 +337,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="pBh-FO-qJB">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="dLk-Z3-POi" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="dLk-Z3-POi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="YTe-gP-IEB"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cRl-vy-VDP">
@@ -552,7 +552,7 @@
         <!--Settings-->
         <scene sceneID="oRc-7w-QuP">
             <objects>
-                <viewController id="wji-bL-7hO" sceneMemberID="viewController">
+                <viewController id="wji-bL-7hO" customClass="SettingsViewController" customModule="BW4MortgageCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f6k-lS-2kP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -574,6 +574,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="347-lC-Itp">
                                         <rect key="frame" x="335" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="switchFlipped:" destination="wji-bL-7hO" eventType="valueChanged" id="vnV-Cj-rfi"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                             </stackView>
@@ -583,6 +586,10 @@
                                 <state key="normal" title="Log Out">
                                     <color key="titleColor" red="0.84705882349999995" green="0.83137254900000002" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="logOutButtonTapped:" destination="wji-bL-7hO" eventType="touchUpInside" id="fuZ-Zv-zi7"/>
+                                    <segue destination="rMT-Vw-fiB" kind="unwind" identifier="unwindToLogin" unwindAction="unwindWith_seg:" id="0la-EJ-qNF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FdZ-Hu-i4n"/>
@@ -600,8 +607,14 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" id="YeW-fn-F4C"/>
+                    <connections>
+                        <outlet property="animationSwitch" destination="347-lC-Itp" id="8Hr-kA-YMS"/>
+                        <outlet property="logOutButton" destination="tgg-RU-BMq" id="oBX-pE-192"/>
+                        <outlet property="welcomeLabel" destination="3Cg-g9-8FB" id="Jwv-OG-XJr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yuj-rf-2Ee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="rMT-Vw-fiB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4201" y="58"/>
         </scene>

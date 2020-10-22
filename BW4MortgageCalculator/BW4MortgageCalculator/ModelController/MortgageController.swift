@@ -11,8 +11,13 @@ class MortgageController {
     
     // MARK: - Properties
     var savedMortgages: [Mortgage] = []
-    var currentUser: String? {
-        UserDefaults.standard.string(forKey: "username")
+    var currentUser: String?
+    var loggedInBool: Bool?
+    var isLoggedIn: Bool? {
+        UserDefaults.standard.bool(forKey: "loggedIn")
+    }
+    var animationsOn: Bool? {
+        UserDefaults.standard.bool(forKey: "animation")
     }
     
     // MARK: - Initalizer
