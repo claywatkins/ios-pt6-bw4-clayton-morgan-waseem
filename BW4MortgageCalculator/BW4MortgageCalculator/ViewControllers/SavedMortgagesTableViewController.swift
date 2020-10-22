@@ -28,13 +28,13 @@ class SavedMortgagesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MortgageCell", for: indexPath)
-        if mortgageController.savedMortgages[indexPath.row].name == "" {
-            cell.textLabel?.text = "Mortgage \(indexPath.row + 1)"
-        } else {
-            cell.textLabel?.text = mortgageController.savedMortgages[indexPath.row].name            
-        }
-        cell.detailTextLabel?.text = "Total Mortgage Cost: $\(mortgageController.savedMortgages[indexPath.row].totalCost)"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MortgageTableViewCell.reuseIdentifier, for: indexPath) as? MortgageTableViewCell else { return UITableViewCell()}
+        cell.mortgage = mortgageController.savedMortgages[indexPath.row]
+        
+//        if mortgageController.savedMortgages[indexPath.row].name == "" {
+//            cell.textLabel?.text = "Mortgage \(indexPath.row + 1)"
+//        }
+//        cell.detailTextLabel?.text = "Total Mortgage Cost: $\(mortgageController.savedMortgages[indexPath.row].totalCost)"
         return cell
     }
     

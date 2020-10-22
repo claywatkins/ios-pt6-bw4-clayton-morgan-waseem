@@ -178,6 +178,7 @@ class MortgageCalculatorViewController: UIViewController {
         
         // Slider
         interestRateSlider.tintColor = ColorsHelper.LaurelGreen
+        interestRateSlider.thumbTintColor = ColorsHelper.Nickel
     }
     
     // Once done with PickerView, Done button removes the picker

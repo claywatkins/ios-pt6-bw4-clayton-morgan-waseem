@@ -230,7 +230,9 @@
                             <constraint firstItem="nuO-6w-Ka5" firstAttribute="trailing" secondItem="jFU-96-fVI" secondAttribute="trailing" constant="20" id="tQE-JW-Ub8"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calculator" image="plusminus" catalog="system" selectedImage="plusminus" id="BrH-Na-BEW"/>
+                    <tabBarItem key="tabBarItem" title="Calculator" image="plusminus" catalog="system" selectedImage="plusminus" id="BrH-Na-BEW">
+                        <color key="badgeColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="ipF-M6-9UE"/>
                     <connections>
                         <outlet property="calculateButton" destination="Eeb-uk-vwy" id="MAX-4J-5iG"/>
@@ -264,6 +266,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.2196078431372549" green="0.30196078431372547" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="YPw-Pg-aZg" kind="relationship" relationship="viewControllers" id="Nml-TF-Myt"/>
@@ -476,30 +479,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MortgageCell" textLabel="uNo-BP-TfN" detailTextLabel="ifn-pz-Bam" rowHeight="64" style="IBUITableViewCellStyleValue1" id="deb-tf-8Wn">
-                                <rect key="frame" x="0.0" y="28" width="414" height="64"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MortgageCell" rowHeight="95" id="deb-tf-8Wn" customClass="MortgageTableViewCell" customModule="BW4MortgageCalculator" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="deb-tf-8Wn" id="efN-NM-fJe">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uNo-BP-TfN">
-                                            <rect key="frame" x="20" y="22" width="33" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ifn-pz-Bam">
-                                            <rect key="frame" x="350" y="22" width="44" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVn-AH-c5r">
+                                            <rect key="frame" x="10" y="5" width="394" height="85"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-l3-dsE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="85"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="cnb-dr-3ah">
+                                                            <rect key="frame" x="0.0" y="1" width="108" height="83"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="108" id="Kwm-TI-Zkb"/>
+                                                                <constraint firstAttribute="height" constant="83" id="oI8-Aw-ar9"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mortgage Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWh-L9-CmY">
+                                                            <rect key="frame" x="148" y="29.5" width="246" height="26.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="SYf-l3-dsE" secondAttribute="trailing" id="DPi-su-Rc5"/>
+                                                <constraint firstAttribute="bottom" secondItem="SYf-l3-dsE" secondAttribute="bottom" id="G4r-kr-ZT1"/>
+                                                <constraint firstItem="SYf-l3-dsE" firstAttribute="top" secondItem="FVn-AH-c5r" secondAttribute="top" id="a6x-Kq-2UQ"/>
+                                                <constraint firstItem="SYf-l3-dsE" firstAttribute="leading" secondItem="FVn-AH-c5r" secondAttribute="leading" id="eQh-c7-HKT"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="FVn-AH-c5r" secondAttribute="bottom" constant="5" id="8lW-tV-dBT"/>
+                                        <constraint firstAttribute="trailing" secondItem="FVn-AH-c5r" secondAttribute="trailing" constant="10" id="9Ey-iw-jOP"/>
+                                        <constraint firstItem="FVn-AH-c5r" firstAttribute="leading" secondItem="efN-NM-fJe" secondAttribute="leading" constant="10" id="M4B-is-2Hu"/>
+                                        <constraint firstItem="FVn-AH-c5r" firstAttribute="top" secondItem="efN-NM-fJe" secondAttribute="top" constant="5" id="Tay-A8-WkT"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.8862745098" green="0.30196078430000001" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
+                                    <outlet property="cellView" destination="FVn-AH-c5r" id="YGm-4F-wxf"/>
+                                    <outlet property="mortgageName" destination="iWh-L9-CmY" id="YZy-eu-Qce"/>
                                     <segue destination="C00-A5-D2r" kind="show" identifier="MortgageDetailSegue" id="ry6-dW-EIl"/>
                                 </connections>
                             </tableViewCell>
@@ -513,7 +541,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaW-Cu-kMQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="800"/>
+            <point key="canvasLocation" x="1453.6231884057972" y="799.55357142857144"/>
         </scene>
         <!--Mortgage Nickname-->
         <scene sceneID="EX3-Vx-roW">
@@ -765,7 +793,9 @@
         <scene sceneID="sGb-Vg-rQs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ott-Eg-Imv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mortgages" image="house.circle.fill" catalog="system" selectedImage="house.circle.fill" id="cFb-6B-r0b"/>
+                    <tabBarItem key="tabBarItem" title="Mortgages" image="house.circle.fill" catalog="system" selectedImage="house.circle.fill" id="cFb-6B-r0b">
+                        <color key="badgeColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="blv-Wx-rFn">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -783,6 +813,7 @@
     </scenes>
     <resources>
         <image name="globe" catalog="system" width="128" height="121"/>
+        <image name="home" width="669" height="669"/>
         <image name="house.circle.fill" catalog="system" width="128" height="121"/>
         <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
@@ -792,6 +823,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
