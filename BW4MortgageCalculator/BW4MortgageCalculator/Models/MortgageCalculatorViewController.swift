@@ -83,6 +83,19 @@ class MortgageCalculatorViewController: UIViewController {
     }
     
     @IBAction func calculateMortgageButtonPressed(_ sender: Any) {
+        // Error Handling
+        if chosenDownPayment > chosenPrincipal! {
+            let alert = UIAlertController(title: "Error", message: "Down payment is larger than Mortgage Amount", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        if chosenTerm == nil {
+            let alert = UIAlertController(title: "Missing Loan Term", message: "Please select a loan term", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
         // Creating a mortgage
         guard let term = chosenTerm, let principal = chosenPrincipal else { return }
         guard chosenInterest != 0 else {
@@ -96,6 +109,8 @@ class MortgageCalculatorViewController: UIViewController {
                                                                             downPayment: myMortgage.downPayment,
                                                                             term: myMortgage.term,
                                                                             interestRate: myMortgage.interestRate)
+        
+        // Running Calculations if everyting is good
         myMortgage.monthlyPayment = Double(myMortgagePayment)
         
         let totalCost = mortgageController.calculateTotalMortgageCost(mortgage: myMortgage)
@@ -110,27 +125,43 @@ class MortgageCalculatorViewController: UIViewController {
         numberFormatter.numberStyle = .decimal
         let formattedMonthlyPayment = numberFormatter.string(from: NSNumber(value: myMortgage.monthlyPayment))!
         let formattedTotalCost = numberFormatter.string(from: NSNumber(value: myMortgage.totalCost))!
-
+        
         monthlyPaymentLabel.text = "$" + formattedMonthlyPayment + " per month"
         totalMortgageLabel.text  = "$" + formattedTotalCost
-     }
+        
+    }
     
     @IBAction func saveButtonTapped(_ sender: Any){
         guard let mortgage = currentMortgage else { print("No current mortgage to be found"); return}
+        
+        // Error Handling
+        if mortgage.downPayment > mortgage.principal {
+            let alert = UIAlertController(title: "Error", message: "Down payment is larger than Mortgage Amount", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        // Adding a name to your Mortgage
         let alert = UIAlertController(title: "Give your Mortgage a name", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Mortgage Name"
         }
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak alert] _ in
             let textField = alert?.textFields![0]
-            self.currentMortgage!.name = textField?.text
-            self.mortgageController.savedMortgages.append(mortgage)
-            self.mortgageController.saveToPersistentStore()
+            if let text = textField!.text, !text.isEmpty {
+                self.currentMortgage!.name = text
+                self.mortgageController.savedMortgages.append(mortgage)
+                self.mortgageController.saveToPersistentStore()
+            } else {
+                let alert = UIAlertController(title: "Mortgage Not Saved", message: "Please enter a name for your mortgage", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }))
         self.present(alert, animated: true) {
             print("Presented")
         }
-    
+        
     }
     
     
@@ -183,7 +214,7 @@ class MortgageCalculatorViewController: UIViewController {
         
         // Slider
         interestRateSlider.tintColor = ColorsHelper.LaurelGreen
-
+        
     }
     
     // Once done with PickerView, Done button removes the picker
