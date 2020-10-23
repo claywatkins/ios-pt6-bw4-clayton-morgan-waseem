@@ -15,11 +15,15 @@ class SavedMortgagesTableViewController: UITableViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = ColorsHelper.DarkSlateGreen
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
+        if mortgageController.animationsDisabled == false {
+            animateTable()            
+        }
     }
 
     // MARK: - Table view data source
@@ -28,13 +32,10 @@ class SavedMortgagesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MortgageCell", for: indexPath)
-        if mortgageController.savedMortgages[indexPath.row].name == "" {
-            cell.textLabel?.text = "Mortgage \(indexPath.row + 1)"
-        } else {
-            cell.textLabel?.text = mortgageController.savedMortgages[indexPath.row].name            
-        }
-        cell.detailTextLabel?.text = "Total Mortgage Cost: $\(mortgageController.savedMortgages[indexPath.row].totalCost)"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MortgageTableViewCell.reuseIdentifier, for: indexPath) as? MortgageTableViewCell else { return UITableViewCell()}
+        cell.mortgage = mortgageController.savedMortgages[indexPath.row]
+       
+        cell.cellView.layer.cornerRadius = 15
         return cell
     }
     
@@ -45,6 +46,29 @@ class SavedMortgagesTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
+    // MARK: - Private Methods
+    
+    // Animate Cells
+    private func animateTable() {
+        tableView.reloadData()
+        let cells = tableView.visibleCells
+        
+        let tableViewHeight = tableView.bounds.size.height
+        
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: -tableViewHeight)
+        }
+        var delayCounter = 0
+        
+        for cell in cells {
+            UIView.animate(withDuration: 1.75, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+                }, completion: nil)
+            delayCounter += 1
+        }
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
