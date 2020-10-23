@@ -295,7 +295,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="277.5" height="34"/>
                                         <color key="backgroundColor" red="0.84705882349999995" green="0.83137254900000002" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDe-A8-Nbb">
                                         <rect key="frame" x="0.0" y="65" width="277.5" height="30"/>
@@ -385,7 +385,7 @@
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" placeholder="Search nearby houses" translatesAutoresizingMaskIntoConstraints="NO" id="ti1-Qn-MkC">
-                                <rect key="frame" x="0.0" y="43" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="41" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -395,7 +395,7 @@
                             <constraint firstItem="ti1-Qn-MkC" firstAttribute="leading" secondItem="7ts-kp-oTZ" secondAttribute="leading" id="399-i0-BgB"/>
                             <constraint firstItem="7ts-kp-oTZ" firstAttribute="trailing" secondItem="7jr-DS-NXX" secondAttribute="trailing" id="5Hj-Kz-KAh"/>
                             <constraint firstItem="ti1-Qn-MkC" firstAttribute="trailing" secondItem="7ts-kp-oTZ" secondAttribute="trailing" id="5yc-Qd-Dnk"/>
-                            <constraint firstItem="7ts-kp-oTZ" firstAttribute="top" secondItem="ti1-Qn-MkC" secondAttribute="bottom" constant="-55" id="A92-Fh-pat"/>
+                            <constraint firstItem="7ts-kp-oTZ" firstAttribute="top" secondItem="ti1-Qn-MkC" secondAttribute="bottom" constant="-53" id="A92-Fh-pat"/>
                             <constraint firstItem="0eZ-3S-RpB" firstAttribute="bottom" secondItem="7ts-kp-oTZ" secondAttribute="bottom" constant="-35" id="CBG-lh-7iG"/>
                             <constraint firstItem="7ts-kp-oTZ" firstAttribute="bottom" secondItem="7jr-DS-NXX" secondAttribute="bottom" id="NML-ab-Uat"/>
                             <constraint firstItem="0eZ-3S-RpB" firstAttribute="trailing" secondItem="7ts-kp-oTZ" secondAttribute="trailing" constant="-35" id="hNF-a8-uJy"/>

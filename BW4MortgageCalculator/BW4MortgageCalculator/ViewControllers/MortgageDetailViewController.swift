@@ -31,6 +31,7 @@ class MortgageDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        nicknameTextField.addDoneButtonOnKeyboard()
     }
     
     private func updateViews() {
@@ -50,6 +51,7 @@ class MortgageDetailViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         guard let mortgage = mortgage, let newNickname = nicknameTextField.text else { return }
         mortgageController.updateMortgageFromPersistentStore(mortgage: mortgage, nickname: newNickname)
+        saveButton.isEnabled = false
         updateViews()
     }
     
