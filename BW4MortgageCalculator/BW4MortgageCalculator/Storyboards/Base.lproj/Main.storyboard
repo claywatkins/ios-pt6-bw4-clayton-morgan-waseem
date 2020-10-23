@@ -384,11 +384,18 @@
                                     <action selector="selfLocationButtonTapped:" destination="rXu-Re-p2U" eventType="touchUpInside" id="Bw1-kC-hj7"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" placeholder="Search nearby houses" translatesAutoresizingMaskIntoConstraints="NO" id="ti1-Qn-MkC">
+                                <rect key="frame" x="0.0" y="43" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7jr-DS-NXX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ti1-Qn-MkC" firstAttribute="leading" secondItem="7ts-kp-oTZ" secondAttribute="leading" id="399-i0-BgB"/>
                             <constraint firstItem="7ts-kp-oTZ" firstAttribute="trailing" secondItem="7jr-DS-NXX" secondAttribute="trailing" id="5Hj-Kz-KAh"/>
+                            <constraint firstItem="ti1-Qn-MkC" firstAttribute="trailing" secondItem="7ts-kp-oTZ" secondAttribute="trailing" id="5yc-Qd-Dnk"/>
+                            <constraint firstItem="7ts-kp-oTZ" firstAttribute="top" secondItem="ti1-Qn-MkC" secondAttribute="bottom" constant="-55" id="A92-Fh-pat"/>
                             <constraint firstItem="0eZ-3S-RpB" firstAttribute="bottom" secondItem="7ts-kp-oTZ" secondAttribute="bottom" constant="-35" id="CBG-lh-7iG"/>
                             <constraint firstItem="7ts-kp-oTZ" firstAttribute="bottom" secondItem="7jr-DS-NXX" secondAttribute="bottom" id="NML-ab-Uat"/>
                             <constraint firstItem="0eZ-3S-RpB" firstAttribute="trailing" secondItem="7ts-kp-oTZ" secondAttribute="trailing" constant="-35" id="hNF-a8-uJy"/>
@@ -399,6 +406,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map.fill" catalog="system" id="fMv-Wc-8TJ"/>
                     <connections>
                         <outlet property="mapView" destination="7ts-kp-oTZ" id="g0Y-L8-1bW"/>
+                        <outlet property="searchBar" destination="ti1-Qn-MkC" id="whb-TJ-Cqe"/>
                         <outlet property="selfLocationButton" destination="0eZ-3S-RpB" id="hxy-uT-ECs"/>
                     </connections>
                 </viewController>

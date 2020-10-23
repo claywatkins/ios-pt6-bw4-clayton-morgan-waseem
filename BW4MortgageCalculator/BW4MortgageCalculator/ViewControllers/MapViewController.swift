@@ -32,6 +32,7 @@ class MapViewController: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var selfLocationButton: UIButton!
     
     // MARK: - Methods -
