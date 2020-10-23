@@ -29,8 +29,17 @@ class MapViewController: UIViewController {
         alert.addAction(action)
         return alert
     }
+    var fetchingAlertIsPresent = false
+    
+    var houseAnnotations: [MKAnnotation] = [
+        Annotation(title: "7542 Rainbow Dr", subtitle: "Single Family Home", coordinate: CLLocationCoordinate2D(latitude: 37.300522, longitude: -122.037075)),
+        Annotation(title: "20567 Cedarbrook Ter,", subtitle: "Townhome", coordinate: CLLocationCoordinate2D(latitude: 37.339490, longitude: -122.033656)),
+        Annotation(title: "8055 Park Villa Cir", subtitle: "Townhome", coordinate: CLLocationCoordinate2D(latitude: 37.315545, longitude: -122.050798)),
+        Annotation(title: "11387 Lindy Pl", subtitle: "Single Family Home", coordinate: CLLocationCoordinate2D(latitude: 37.302715, longitude: -122.059076)),
+        Annotation(title: "20749 Celeste Cir", subtitle: "Condo", coordinate: CLLocationCoordinate2D(latitude: 37.335470, longitude: -122.036387)),
+    ]
 
-    // MARK: - IBOutlet
+    // MARK: - IBOutlets -
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var selfLocationButton: UIButton!
@@ -38,11 +47,19 @@ class MapViewController: UIViewController {
     // MARK: - Methods -
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         configureLocationButton()
     }
     
     func fetchUserLocation() {
+        
+        if userAnnotation != nil {
+            showUserLocation()
+            return
+        }
+        
         present(fetchingAlert, animated: true)
+        fetchingAlertIsPresent = true
         let locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -98,6 +115,7 @@ extension MapViewController: CLLocationManagerDelegate {
         self.userAnnotation = userAnnotation
         
         DispatchQueue.main.async {
+            self.fetchingAlertIsPresent = false
             self.dismiss(animated: true)
         }
         
@@ -105,12 +123,33 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
-        DispatchQueue.main.async {
-            self.dismiss(animated: true)
+        if self.fetchingAlertIsPresent == true {
+            
+            DispatchQueue.main.async {
+                self.fetchingAlertIsPresent = false
+                self.dismiss(animated: true)
+                self.present(self.fetchFailAlert, animated: true)
+            }
+            
+        } else if fetchingAlertIsPresent == false {
+            
             self.present(self.fetchFailAlert, animated: true)
+            
         }
     }
     
 }
 
-
+extension MapViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        if userAnnotation != nil {
+            houseAnnotations.append(userAnnotation!)
+        }
+        
+        mapView.showAnnotations(houseAnnotations, animated: true)
+        searchBar.resignFirstResponder()
+    }
+    
+}

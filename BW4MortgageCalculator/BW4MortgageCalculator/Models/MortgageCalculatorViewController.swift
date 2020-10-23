@@ -52,6 +52,14 @@ class MortgageCalculatorViewController: UIViewController {
         alert.addAction(action)
         return alert
     }
+    var noPrincipalAlertController: UIAlertController {
+        let title = "Please enter principal amount"
+        let message = "We cannot proceed with calculating anything without knowing your mortgage principal"
+        let action = UIAlertAction(title: "OK", style: .default)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(action)
+        return alert
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -94,6 +102,12 @@ class MortgageCalculatorViewController: UIViewController {
     
     @IBAction func calculateMortgageButtonPressed(_ sender: Any) {
         // Error Handling
+        
+        if chosenPrincipal == nil {
+            present(noPrincipalAlertController, animated: true)
+            return
+        }
+        
         if chosenDownPayment > chosenPrincipal! {
             let alert = UIAlertController(title: "Error", message: "Down payment is larger than Mortgage Amount", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
