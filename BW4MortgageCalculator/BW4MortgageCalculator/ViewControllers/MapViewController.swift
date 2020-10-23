@@ -52,6 +52,12 @@ class MapViewController: UIViewController {
     }
     
     func fetchUserLocation() {
+        
+        if userAnnotation != nil {
+            showUserLocation()
+            return
+        }
+        
         present(fetchingAlert, animated: true)
         fetchingAlertIsPresent = true
         let locationManager = CLLocationManager()
