@@ -15,6 +15,16 @@ class MortgageDetailViewController: UIViewController {
     let mortgageController = MortgageController.shared
     var mortgage: Mortgage?
     
+    // Alert Controllers
+    var noNicknameAlert: UIAlertController {
+        let title = "Please add a Nickname"
+        let message = "Your changes were not saved since you didn't enter a Nickname"
+        let action = UIAlertAction(title: "OK", style: .default)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(action)
+        return alert
+    }
+    
     // IBOutlets
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nicknameTextField: UITextField!
@@ -50,6 +60,10 @@ class MortgageDetailViewController: UIViewController {
     
     private func saveNickname() {
         guard let mortgage = mortgage, let newNickname = nicknameTextField.text else { return }
+        guard !nicknameTextField.text!.isEmpty else {
+            present(noNicknameAlert, animated: true)
+            return
+        }
         mortgageController.updateMortgageFromPersistentStore(mortgage: mortgage, nickname: newNickname)
         nicknameTextField.resignFirstResponder()
         saveButton.isEnabled = false
