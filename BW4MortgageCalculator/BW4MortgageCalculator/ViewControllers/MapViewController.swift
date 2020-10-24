@@ -47,6 +47,7 @@ class MapViewController: UIViewController {
     // MARK: - Methods -
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         searchBar.delegate = self
         configureLocationButton()
     }
@@ -90,21 +91,33 @@ class MapViewController: UIViewController {
 //MARK: - Extensions -
 
 extension MapViewController: MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "") {
             annotationView.annotation = annotation
             annotationView.canShowCallout = true
+            annotationView.image = UIImage(named: "annotation")
             return annotationView
         }
         else {
             let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "")
             annotationView.annotation = annotation
             annotationView.canShowCallout = true
+            annotationView.image = UIImage(named: "annotation")
             return annotationView
         }
         
     }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let annotation = view.annotation as! Annotation
+        let coordinate = annotation.coordinate
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate))
+        mapItem.name = annotation.title
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+    }
+    
 }
 
 extension MapViewController: CLLocationManagerDelegate {
