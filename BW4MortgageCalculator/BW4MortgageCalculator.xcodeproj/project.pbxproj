@@ -23,6 +23,7 @@
 		7B225D5C2537DB6E004CBFE3 /* MortgageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B225D5B2537DB6E004CBFE3 /* MortgageController.swift */; };
 		7B225D6C2537EE3B004CBFE3 /* LSIMortgage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B225D6B2537EE3B004CBFE3 /* LSIMortgage.m */; };
 		7B3DBC2D253FD77D0053A5D5 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3DBC2C253FD77D0053A5D5 /* Annotation.swift */; };
+		7B490CBB2543D5C200697A3B /* annotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B490CBA2543D5C200697A3B /* annotation.png */; };
 		7B9EDE55253A8CDC008C57CD /* HelpfulLinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9EDE54253A8CDC008C57CD /* HelpfulLinksViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		7B225D6A2537EE3B004CBFE3 /* LSIMortgage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSIMortgage.h; sourceTree = "<group>"; };
 		7B225D6B2537EE3B004CBFE3 /* LSIMortgage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSIMortgage.m; sourceTree = "<group>"; };
 		7B3DBC2C253FD77D0053A5D5 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		7B490CBA2543D5C200697A3B /* annotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = annotation.png; sourceTree = "<group>"; };
 		7B9EDE54253A8CDC008C57CD /* HelpfulLinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpfulLinksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 		0B6AE1D725368FAC009DA64C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7B490CBA2543D5C200697A3B /* annotation.png */,
 				0B6AE1DF25369021009DA64C /* BW4MortgageCalculator-Bridging-Header.h */,
 				0BAC6351253FDD06001BE991 /* ColorHelper.swift */,
 				0B6AE1C125368F61009DA64C /* AppDelegate.swift */,
@@ -218,6 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B490CBB2543D5C200697A3B /* annotation.png in Resources */,
 				0B6AE1CE25368F63009DA64C /* LaunchScreen.storyboard in Resources */,
 				0B6AE1CB25368F63009DA64C /* Assets.xcassets in Resources */,
 				0B6AE1C925368F61009DA64C /* Main.storyboard in Resources */,
