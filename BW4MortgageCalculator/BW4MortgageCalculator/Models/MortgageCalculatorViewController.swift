@@ -181,6 +181,7 @@ class MortgageCalculatorViewController: UIViewController {
                 self.currentMortgage!.name = text
                 self.mortgageController.savedMortgages.append(mortgage)
                 self.mortgageController.saveToPersistentStore()
+                self.resetView()
             } else {
                 let alert = UIAlertController(title: "Mortgage Not Saved", message: "Please enter a name for your mortgage", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
