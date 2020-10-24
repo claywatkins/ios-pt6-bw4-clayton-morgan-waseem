@@ -14,6 +14,15 @@ class MortgageDetailViewController: UIViewController {
     // Properties
     let mortgageController = MortgageController.shared
     var mortgage: Mortgage?
+    var numberFormatter: NumberFormatter {
+        let nF = NumberFormatter()
+        nF.numberStyle = .decimal
+        return nF
+    }
+    
+    // let numberFormatter = NumberFormatter()
+//    numberFormatter.numberStyle = .decimal
+//    let formattedMonthlyPayment = numberFormatter.string(from: NSNumber(value: myMortgage.monthlyPayment))!
     
     // Alert Controllers
     var noNicknameAlert: UIAlertController {
@@ -50,12 +59,16 @@ class MortgageDetailViewController: UIViewController {
         guard let nickname = mortgage.name else { return }
         title = nickname
         nicknameTextField.text = mortgage.name!
-        totalCostLabel.text = "\(mortgage.totalCost)"
-        monthlyPaymentLabel.text = "\(mortgage.monthlyPayment)"
-        principalLabel.text = "\(mortgage.principal)"
-        downPaymentLabel.text = "\(mortgage.downPayment)"
-        rateLabel.text = "\(mortgage.interestRate)"
-        termLabel.text = "\(mortgage.term)"
+        let formattedTotalCost = numberFormatter.string(from: NSNumber(value: mortgage.totalCost))!
+        totalCostLabel.text = "$" + formattedTotalCost
+        let formattedMontlyPayment = numberFormatter.string(from: NSNumber(value: mortgage.monthlyPayment))!
+        monthlyPaymentLabel.text = "$" +  formattedMontlyPayment
+        let formattedPrincipal = numberFormatter.string(from: NSNumber(value: mortgage.principal))!
+        principalLabel.text = "$" + formattedPrincipal
+        let formattedDownPayment = numberFormatter.string(from: NSNumber(value: mortgage.downPayment))!
+        downPaymentLabel.text = "$" + formattedDownPayment
+        rateLabel.text = "\(mortgage.interestRate)%"
+        termLabel.text = "\(mortgage.term) years"
     }
     
     private func saveNickname() {
