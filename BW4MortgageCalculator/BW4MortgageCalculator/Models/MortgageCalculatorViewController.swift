@@ -76,6 +76,11 @@ class MortgageCalculatorViewController: UIViewController {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        resetView()
+    }
+    
     // MARK: - IBActions
     @IBAction func interestRateSilderChanged(_ sender: UISlider) {
         // Rounding the slider value
@@ -262,6 +267,17 @@ class MortgageCalculatorViewController: UIViewController {
         }
     }
     
+    private func resetView() {
+        mortgageAmountLabel.text = "$0.00"
+        mortgageAmountTextField.text = ""
+        downPaymentLabel.text = "$0.00"
+        downPaymentTextField.text = ""
+        interestRateLabel.text = ""
+        interestRateSlider.value = 0
+        loanTermLabel.text = ""
+        totalMortgageLabel.text = ""
+        monthlyPaymentLabel.text = ""
+    }
 }
 
 // MARK: - Extension -
