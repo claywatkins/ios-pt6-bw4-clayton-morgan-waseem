@@ -31,6 +31,7 @@ class MortgageDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        nicknameTextField.delegate = self
         nicknameTextField.addDoneButtonOnKeyboard()
     }
     
@@ -47,12 +48,17 @@ class MortgageDetailViewController: UIViewController {
         termLabel.text = "\(mortgage.term)"
     }
     
-    // IBActions
-    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+    private func saveNickname() {
         guard let mortgage = mortgage, let newNickname = nicknameTextField.text else { return }
         mortgageController.updateMortgageFromPersistentStore(mortgage: mortgage, nickname: newNickname)
+        nicknameTextField.resignFirstResponder()
         saveButton.isEnabled = false
         updateViews()
+    }
+    
+    // IBActions
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        saveNickname()
     }
     
     @IBAction func nicknameTextFieldValueChanged(_ sender: UITextField) {
@@ -68,3 +74,12 @@ class MortgageDetailViewController: UIViewController {
     }
     
 } //End of class
+
+extension MortgageDetailViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        saveNickname()
+        return true
+    }
+    
+}
