@@ -20,10 +20,10 @@ class SavedMortgagesTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if mortgageController.animationsDisabled == false {
-            animateTable()            
-        }
         tableView.reloadData()
+        if mortgageController.animationsDisabled == false {
+            animateTable()
+        }
     }
 
     // MARK: - Table view data source
@@ -51,7 +51,6 @@ class SavedMortgagesTableViewController: UITableViewController {
     
     // Animate Cells
     private func animateTable() {
-        tableView.reloadData()
         let cells = tableView.visibleCells
         
         let tableViewHeight = tableView.bounds.size.height
