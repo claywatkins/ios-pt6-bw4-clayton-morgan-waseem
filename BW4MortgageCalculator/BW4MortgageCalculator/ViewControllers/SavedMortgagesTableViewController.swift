@@ -16,7 +16,6 @@ class SavedMortgagesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorsHelper.DarkSlateGreen
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,6 +23,7 @@ class SavedMortgagesTableViewController: UITableViewController {
         if mortgageController.animationsDisabled == false {
             animateTable()            
         }
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source

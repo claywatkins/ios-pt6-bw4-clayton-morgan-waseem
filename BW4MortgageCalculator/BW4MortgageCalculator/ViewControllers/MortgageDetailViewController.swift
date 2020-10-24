@@ -24,6 +24,16 @@ class MortgageDetailViewController: UIViewController {
 //    numberFormatter.numberStyle = .decimal
 //    let formattedMonthlyPayment = numberFormatter.string(from: NSNumber(value: myMortgage.monthlyPayment))!
     
+    // Alert Controllers
+    var noNicknameAlert: UIAlertController {
+        let title = "Please add a Nickname"
+        let message = "Your changes were not saved since you didn't enter a Nickname"
+        let action = UIAlertAction(title: "OK", style: .default)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(action)
+        return alert
+    }
+    
     // IBOutlets
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nicknameTextField: UITextField!
@@ -40,6 +50,7 @@ class MortgageDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        nicknameTextField.delegate = self
         nicknameTextField.addDoneButtonOnKeyboard()
     }
     
@@ -60,12 +71,21 @@ class MortgageDetailViewController: UIViewController {
         termLabel.text = "\(mortgage.term) years"
     }
     
-    // IBActions
-    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+    private func saveNickname() {
         guard let mortgage = mortgage, let newNickname = nicknameTextField.text else { return }
+        guard !nicknameTextField.text!.isEmpty else {
+            present(noNicknameAlert, animated: true)
+            return
+        }
         mortgageController.updateMortgageFromPersistentStore(mortgage: mortgage, nickname: newNickname)
+        nicknameTextField.resignFirstResponder()
         saveButton.isEnabled = false
         updateViews()
+    }
+    
+    // IBActions
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        saveNickname()
     }
     
     @IBAction func nicknameTextFieldValueChanged(_ sender: UITextField) {
@@ -81,3 +101,12 @@ class MortgageDetailViewController: UIViewController {
     }
     
 } //End of class
+
+extension MortgageDetailViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        saveNickname()
+        return true
+    }
+    
+}

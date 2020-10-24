@@ -738,7 +738,7 @@
                                                                     <constraint firstAttribute="width" constant="200" id="bfe-yU-Isz"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="nickname"/>
                                                                 <connections>
                                                                     <action selector="nicknameTextFieldValueChanged:" destination="C00-A5-D2r" eventType="editingChanged" id="0vN-F8-eUE"/>
                                                                 </connections>
